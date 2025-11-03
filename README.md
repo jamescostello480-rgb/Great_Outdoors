@@ -1,3 +1,3 @@
-\## Evalyn Alviar
-\## James Costello
+## Evalyn Alviar
+## James Costello
 
