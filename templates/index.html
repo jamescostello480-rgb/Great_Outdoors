@@ -15,34 +15,87 @@
 
     <p id="alttext" style="font-size:50px"></p>
 
-    <!-- Replaced the initial hard-coded links with the Related Information subsection -->
-    <section id="related-info">
-        <h2>Related Information</h2>
-        <ul>
-            {% if related_items %}
-                {% for item in related_items %}
-                    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-                {% endfor %}
-            {% else %}
-                <li>No related information available.</li>
-            {% endif %}
-        </ul>
-    </section>
-
-    <!-- Add User Link -->
-    <p>
-        <a href="{{ url_for('add_user') }}">Add New User</a>
-    </p>
-
-    <!-- Optional: Display current users -->
-    <h2>Current Users</h2>
-    <ul>
-        {% for user in users %}
-            <li>{{ user.name }}</li>
-        {% endfor %}
-    </ul>
+    <!-- Current users section -->
+    <section id="current-users" class="users-section" aria-labelledby="current-users-heading">
+      <h2 id="current-users-heading">Current Users</h2>
+      <ul>
+          {% for user in users %}
+              <li>{{ user.name }}</li>
+          {% else %}
+              <li>No users yet.</li>
+          {% endfor %}
+      </ul>
+      
 
     
+
+    <nav class="topnav">
+  <a class="logo" href="/">Great Outdoors</a>
+
+  <div class="nav-item">
+    <a href="mountain.html" target="_blank" rel="noopener noreferrer">Mountain</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="mountain.html" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="forest.html" target="_blank" rel="noopener noreferrer">Forest</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="forest.html" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="falls.html" target="_blank" rel="noopener noreferrer">Falls</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="falls.html" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="ferry.html" target="_blank" rel="noopener noreferrer">Ferry</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="ferry.html" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="lake.html" target="_blank" rel="noopener noreferrer">Lake</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="lake.html" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="park.html" target="_blank" rel="noopener noreferrer">Park</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="park.html" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
 
 </body>
 </html>

@@ -1,49 +1,159 @@
+/* Navigation bar */
+.topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: green;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+  gap: 12px;
+}
+
+/* keep "Great Outdoors" on the left and push the rest to the right */
+.topnav .logo {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: auto; /* pushes the other .nav-item elements to the right */
+  font-size: 18px;
+}
+
+/* each top-level link is a positioned container so its dropdown can be separate */
+.topnav .nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* small spacing for the direct links */
+.topnav .nav-item > a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+/* dropdown box for each nav-item */
+.topnav .nav-item .dropdown {
+  position: absolute;
+  top: 100%; /* directly below the parent link */
+  left: 0;
+  background: #dbf7dd;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  padding: 8px 12px;
+  min-width: 200px;
+  max-width: calc(100vw - 40px); /* never overflow viewport */
+  box-sizing: border-box;
+  transform-origin: top left;
+  transform: translateY(-6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
+  white-space: nowrap;
+  z-index: 1100;
+  overflow-wrap: anywhere;
+}
+
+/* remove bullets and default list spacing in dropdowns */
+.topnav .nav-item .dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.topnav .nav-item .dropdown li {
+  margin: 6px 0;
+}
+
+/* show only the dropdown for the hovered nav-item */
+.topnav .nav-item:hover .dropdown {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* align dropdown to the right for the last few nav-items to prevent overflow */
+.topnav .nav-item:nth-last-child(-n+3) .dropdown {
+  left: auto;
+  right: 0;
+  transform-origin: top right;
+}
+
+/* push page content below fixed nav */
 body {
-  background-color: linen;
+  padding-top: 70px;
+  background-color: #dbf7dd; /* light soft green */
 }
 
 h1 {
-  color: navy;
+  color: green;
 }
 
 img{
-  width:300px;
+  width:300px;
   height:200px;
   border:10px solid green;
-  color:white;
+  color:white;
   border-radius:20px;
 }
 
 figcaption{
-  width: 315px;
+  width: 315px;
   text-align: left;
   margin-left: 50px;
 }
-/* Styles for Related Information subsection */
-#related-info {
-  background: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: 12px 16px;
-  margin: 20px 0;
+
+/* links in the dropdown */
+.topnav .nav-item .dropdown a {
+  color: #0b6b1f; /* green links */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.topnav .nav-item .dropdown a:hover {
+  color: #095010; /* darker green on hover */
+  text-decoration: underline;
+}
+
+/* styling for the Current Users section */
+.users-section {
+  /* align to the left side of the page */
+  max-width: 420px;
+  margin: 18px 0 18px 20px; /* top/right/bottom/left */
+  background: rgba(255,255,255,0.9);
+  padding: 16px 20px;
   border-radius: 8px;
-  max-width: 720px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  color: green;
+
+  /* green border */
+  border: 3px solid green;
+  box-sizing: border-box;
 }
 
-#related-info h2 {
-  color: darkgreen;
-  margin-top: 0;
+.users-section h2 {
+  margin: 0 0 8px 0;
+  color: green;
+  font-size: 1.25rem;
 }
 
-#related-info ul {
+.users-section ul {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 1.1rem; /* keep simple list indentation */
 }
 
-#related-info a {
-  color: navy;
+.users-section a {
+  color: #0b6b1f;
+  font-weight: 600;
   text-decoration: none;
 }
 
-#related-info a:hover {
+.users-section a:hover {
   text-decoration: underline;
 }

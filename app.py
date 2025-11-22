@@ -17,16 +17,7 @@ with app.app_context():
 @app.route('/')
 def index():
     users = User.query.all()
-    # Add a small list of related information to show in the subsection
-    related_items = [
-        {'title': 'Climb the Mountain', 'url': 'mountain.html'},
-        {'title': 'Wander the Forest', 'url': 'forest.html'},
-        {'title': 'See the Falls', 'url': 'falls.html'},
-        {'title': 'Ride the Ferry', 'url': 'ferry.html'},          # added
-        {'title': 'Walk Around the Lake', 'url': 'lake.html'},
-        {'title': 'Read in the Park', 'url': 'park.html'},         # added
-    ]
-    return render_template('index.html', users=users, related_items=related_items)
+    return render_template('index.html', users=users)
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_user():
