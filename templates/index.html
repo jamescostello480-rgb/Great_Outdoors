@@ -15,14 +15,19 @@
 
     <p id="alttext" style="font-size:50px"></p>
 
-    <ul>
-        <li><a href="mountain.html">Climb the Mountain</a></li>
-        <li><a href="forest.html">Wander the Forest</a></li>
-        <li><a href="falls.html">See the Falls</a></li>
-        <li><a href="ferry.html">Ride the Ferry</a></li>
-        <li><a href="lake.html">Walk Around the Lake</a></li>
-        <li><a href="park.html">Read in the Park</a></li>
-    </ul>
+    <!-- Replaced the initial hard-coded links with the Related Information subsection -->
+    <section id="related-info">
+        <h2>Related Information</h2>
+        <ul>
+            {% if related_items %}
+                {% for item in related_items %}
+                    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+                {% endfor %}
+            {% else %}
+                <li>No related information available.</li>
+            {% endif %}
+        </ul>
+    </section>
 
     <!-- Add User Link -->
     <p>
@@ -36,6 +41,8 @@
             <li>{{ user.name }}</li>
         {% endfor %}
     </ul>
+
+    
 
 </body>
 </html>
