@@ -29,59 +29,71 @@
   <a class="logo" href="/">Great Outdoors</a>
 
   <div class="nav-item">
-    <a href="https://www.alltrails.com/us/washington/seattle" target="_blank" rel="noopener noreferrer">Mountain</a>
+    <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
     <div class="dropdown">
       <ul>
         <li>
-          <a href="https://www.alltrails.com/us/washington/seattle" target="_blank" rel="noopener noreferrer">
+          <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">
             Climb the Mountain
           </a>
         </li>
+
+    <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
       </ul>
     </div>
   </div>
 
   <div class="nav-item">
-    <a href="https://www.alltrails.com/us/washington/seattle/forest" target="_blank" rel="noopener noreferrer">Forest</a>
+    <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
     <div class="dropdown">
       <ul>
-        <li><a href="https://www.alltrails.com/us/washington/seattle/forest" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+        <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+    <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+    <div class="dropdown">
+      <ul>
+        <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
       </ul>
     </div>
   </div>
 
   <div class="nav-item">
-    <a href="https://parkways.seattle.gov/2025/10/20/seattles-best-parks-for-fall-colors/" target="_blank" rel="noopener noreferrer">Falls</a>
+    <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
     <div class="dropdown">
       <ul>
-        <li><a href="https://parkways.seattle.gov/2025/10/20/seattles-best-parks-for-fall-colors/" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+        <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+    <div class="dropdown">
+      <ul>
+        <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
       </ul>
     </div>
   </div>
 
   <div class="nav-item">
-    <a href="ferry.html" target="_blank" rel="noopener noreferrer">Ferry</a>
+    <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
     <div class="dropdown">
       <ul>
-        <li><a href="ferry.html" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+        <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
       </ul>
     </div>
   </div>
 
   <div class="nav-item">
-    <a href="lake.html" target="_blank" rel="noopener noreferrer">Lake</a>
+    <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
     <div class="dropdown">
       <ul>
-        <li><a href="lake.html" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+        <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
       </ul>
     </div>
   </div>
 
   <div class="nav-item">
-    <a href="park.html" target="_blank" rel="noopener noreferrer">Park</a>
+    <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
     <div class="dropdown">
       <ul>
-        <li><a href="park.html" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+        <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
       </ul>
     </div>
   </div>

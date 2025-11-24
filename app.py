@@ -29,6 +29,30 @@ def add_user():
         return redirect(url_for('index'))
     return render_template('add_user.html')
 
+@app.route('/mountain')
+def mountain():
+    return render_template('mountain.html')
+
+@app.route('/forest')
+def forest():
+    return render_template('forest.html')
+
+@app.route('/falls')
+def falls():
+    return render_template('falls.html')
+
+@app.route('/ferry')
+def ferry():
+    return render_template('ferry.html')
+
+@app.route('/lake')
+def lake():
+    return render_template('lake.html')
+
+@app.route('/park')
+def park():
+    return render_template('park.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
