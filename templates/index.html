@@ -25,19 +25,11 @@
               <li>No users yet.</li>
           {% endfor %}
       </ul>
+    </section>
     <nav class="topnav">
   <a class="logo" href="/">Great Outdoors</a>
 
   <div class="nav-item">
-    <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
-    <div class="dropdown">
-      <ul>
-        <li>
-          <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">
-            Climb the Mountain
-          </a>
-        </li>
-
     <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
     <div class="dropdown">
       <ul>
@@ -51,19 +43,12 @@
     <div class="dropdown">
       <ul>
         <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
-    <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
       </ul>
     </div>
   </div>
 
   <div class="nav-item">
     <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
     <div class="dropdown">
       <ul>
         <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
