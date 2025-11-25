@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seattle Ferry - Great Outdoors</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #1e5a96 0%, #2b8cbd 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .ferry-info {
+      background: #f4f4f4;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    .ferry-routes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .route-card {
+      background: white;
+      padding: 1.5rem;
+      border-left: 4px solid #1e5a96;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .route-card h3 {
+      color: #1e5a96;
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌲 Seattle Ferry Guide</h1>
+    <p>Explore the Great Outdoors of Washington State</p>
+  </header>
+
+  <div class="container">
+    <section class="ferry-info">
+      <h2>Welcome to Seattle Ferries</h2>
+      <p>Experience stunning views of Puget Sound and the Cascade Mountains. Seattle's ferries connect you to beautiful outdoor destinations and island communities.</p>
+    </section>
+
+    <h2>Popular Ferry Routes</h2>
+    <div class="ferry-routes">
+      <div class="route-card">
+        <h3>🏝️ Bainbridge Island</h3>
+        <p><strong>Duration:</strong> 35 minutes</p>
+        <p>Scenic route perfect for hiking and cycling adventures.</p>
+      </div>
+      <div class="route-card">
+        <h3>🏔️ Vashon Island</h3>
+        <p><strong>Duration:</strong> 15-35 minutes</p>
+        <p>Explore quiet trails and pristine beaches.</p>
+      </div>
+      <div class="route-card">
+        <h3>🌊 Orcas Island</h3>
+        <p><strong>Duration:</strong> 1.5 hours</p>
+        <p>Gateway to Mount Constitution and San Juan Islands.</p>
+      </div>
+    </div>
+
+    <section class="ferry-info">
+      <h2>Plan Your Trip</h2>
+      <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+        <li>Check schedules at <strong>wsdot.wa.gov/ferries</strong></li>
+        <li>Bring binoculars for wildlife viewing</li>
+        <li>Pack layers for changing weather</li>
+        <li>Arrive 15 minutes early for foot passengers</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Great Outdoors - Seattle Ferry Guide</p>
+  </footer>
+</body>
+</html>

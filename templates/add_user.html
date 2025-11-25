@@ -1,25 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Add a New User - Great Outdoors</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
-    <script src="{{ url_for('static', filename='scripts/myscripts.js') }}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Outdoors WA - User Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e5631 0%, #2d6a4f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-container h1 {
+            text-align: center;
+            color: #1e5631;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .login-container p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #1e5631;
+            box-shadow: 0 0 5px rgba(30, 86, 49, 0.3);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e5631;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2d6a4f;
+        }
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        .login-footer a {
+            color: #1e5631;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-
-    <h1>Add a New User</h1>
-
-    <form method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" required>
-        <button type="submit">Add</button>
-    </form>
-
-    <br>
-
-    <a href="{{ url_for('index') }}">Back to Great Outdoors Home</a>
-
+    <div class="login-container">
+        <h1>Great Outdoors WA</h1>
+        <p>User Login</p>
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="login-footer">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+    </div>
 </body>
 </html>
-
