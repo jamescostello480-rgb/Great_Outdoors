@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Great Outdoors — Seattle Mountains</title>
+  <meta name="description" content="Guide to the mountain hikes, viewpoints, and outdoors activities near Seattle, Washington — Mount Rainier, Mount Si, Rattlesnake Ledge and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#2176FF;
+      --muted:#6B7280;
+      --bg:#0f1724;
+      --card:#0b1220;
+      --glass:rgba(255,255,255,0.04);
+      color-scheme: dark;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg, #071026 0%, #021018 100%);
+      color:#E6EEF3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      padding:1.25rem 1.75rem;
+      backdrop-filter: blur(6px);
+    }
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .logo{
+      width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#1d9bf0,#64ffda);
+      display:flex;justify-content:center;align-items:center;font-weight:800;color:#021018;
+      box-shadow:0 4px 20px rgba(2,8,23,0.45);
+      font-family:monospace;
+    }
+    nav a{color:var(--muted);text-decoration:none;padding:.35rem .5rem;border-radius:6px}
+    nav a:hover{background:var(--glass);color:#fff}
+    .container{max-width:1100px;margin:1.2rem auto;padding:0 1.25rem;}
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1rem;
+      align-items:start;
+      padding:1.6rem;
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(4,12,22,0.6), rgba(4,12,22,0.45));
+      box-shadow: 0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,0.02);
+      overflow:hidden;
+      min-height:380px;
+    }
+    .hero-inner{display:flex;flex-direction:column;gap:.8rem;max-width:720px}
+    .eyebrow{display:inline-block;font-weight:600;color:var(--accent);padding:.25rem .5rem;border-radius:8px;background:rgba(33,118,255,.08);font-size:.82rem}
+    h1{font-size:2.2rem;margin:.1rem 0;line-height:1.06}
+    p.lead{color:var(--muted);margin:0 0 1rem}
+    .badges{display:flex;gap:.5rem;flex-wrap:wrap}
+    .badge{background:var(--glass);padding:.45rem .6rem;border-radius:999px;font-size:.82rem;color:#cfe6ff;display:inline-flex;align-items:center;gap:.5rem}
+    .hero-media{margin-top: 12px;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+    .hero-media img{width:100%;max-width:320px;border-radius:12px;box-shadow:0 10px 30px rgba(1,6,10,0.6);object-fit:cover;height:200px}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+    @media(min-width:900px){ .grid{grid-template-columns:2fr 1fr} }
+
+    /* Card */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.4)
+    }
+    .section-title{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+    .section-title h2{margin:0;font-size:1.05rem}
+    .trails{display:grid;gap:.6rem}
+    .trail{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02)}
+    .trail img{width:110px;height:70px;border-radius:10px;object-fit:cover}
+    .trail-info{flex:1}
+    .trail-meta{display:flex;gap:.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+    .pill{background:rgba(255,255,255,0.03);padding:2px 8px;border-radius:999px}
+
+    /* Map */
+    .map{width:100%;height:280px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.5rem}
+    .gallery img{width:100%;height:110px;object-fit:cover;border-radius:8px;cursor:pointer;display:block}
+    .modal{
+      position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(0deg, rgba(2,6,10,0.75), rgba(2,6,10,0.9));
+    }
+    .modal img{max-width:92%;max-height:86%;border-radius:8px;box-shadow:0 16px 80px rgba(0,0,0,0.8)}
+    .modal.show{display:flex}
+
+    /* Footer */
+    footer{opacity:.9;padding:2rem 1.25rem;margin-top:1rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+
+    /* Buttons & small helpers */
+    button{appearance:none;background:var(--accent);color:#061228;padding:.6rem .9rem;border:none;border-radius:10px;font-weight:600;cursor:pointer}
+    button.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#d6e9ff}
+    small{font-size:.8rem}
+    a.simple{color:var(--accent);text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">GO</div>
+      <div>
+        <strong>Great Outdoors</strong>
+        <div style="font-size:.9rem;color:var(--muted)">Seattle, WA — Mountains & Trails</div>
+      </div>
+    </div>
+    <nav aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#trails">Trails</a>
+      <a href="#map">Map</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero card" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <span class="eyebrow">Explore the Cascades</span>
+        <h1 id="hero-heading">Seattle Mountains: Hikes, Views & Safety Tips</h1>
+        <p class="lead">From the iconic Mount Rainier to local favorites like Mount Si and Rattlesnake Ledge — find route details, trail difficulty, seasonal tips, and quick weather in the Seattle region.</p>
+        <div class="badges" aria-hidden="true">
+          <span class="badge">Day hikes</span>
+          <span class="badge">Summits</span>
+          <span class="badge">Family friendly</span>
+          <span class="badge">Wildflowers</span>
+        </div>
+
+        <div class="hero-media" role="img" aria-label="Seattle mountain views">
+          <img src="https://images.unsplash.com/photo-1500776220850-0b8adb7eb5d7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8c9f2f22f8a9eafb89d7e21f4b5659f9" alt="View of forested mountain and snow-capped peak at sunrise">
+          <img src="https://images.unsplash.com/photo-1455763916899-e8b50eca9966?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7de7cbe1b38f5927d5c5ace502c1f2f6" alt="Trail with hikers and mountain ridge in the background">
+        </div>
+
+        <div style="display:flex;gap:.8rem;margin-top:10px;">
+          <button onclick="document.querySelector('#trails').scrollIntoView({behavior:'smooth'})">View Top Trails</button>
+          <button class="secondary" onclick="document.querySelector('#gallery').scrollIntoView({behavior:'smooth'})">Open Gallery</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section id="trails" class="card" aria-labelledby="trails-heading">
+        <div class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2v20" stroke="#64ffda" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 12h12" stroke="#64ffda" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h2 id="trails-heading">Popular Mountain Hikes Near Seattle</h2>
+        </div>
+
+        <div class="trails" role="list">
+          <article class="trail" role="listitem">
+            <img src="https://images.unsplash.com/photo-1607377201883-dc9ba9e8d29a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=77b21b8aef93d3d1b9120cc2732f0b6b" alt="Snapshot of Mount Si summit overlooking valley">
+            <div class="trail-info">
+              <strong>Mount Si</strong>
+              <div class="trail-meta">
+                <span class="pill">6.9 mi RT</span>
+                <span class="pill">Elevation gain 3,150 ft</span>
+                <span class="pill">Moderate</span>
+              </div>
+              <p style="margin:.5rem 0 .25rem;color:var(--muted)">Classic Pacific Northwest hike — steep switchbacks, rewarding views of the Snoqualmie Valley and Seattle skyline on clear days.</p>
+              <small style="color:var(--muted)">Best time: Apr–Oct • Tips: start early, bring water, watch for snow late season.</small>
+            </div>
+          </article>
+
+          <article class="trail" role="listitem">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3390da0b8a9ad4d5e7d0fdfe5bbbf0db" alt="Rattlesnake Ledge trail with hikers on a sunny day">
+            <div class="trail-info">
+              <strong>Rattlesnake Ledge</strong>
+              <div class="trail-meta">
+                <span class="pill">4 mi RT</span>
+                <span class="pill">Elevation gain 1,160 ft</span>
+                <span class="pill">Easy–Moderate</span>
+              </div>
+              <p style="margin:.5rem 0 .25rem;color:var(--muted)">Popular family-friendly hike above Rattlesnake Lake — short drive from Seattle, with dramatic cliff viewpoint and picnic spots.</p>
+              <small style="color:var(--muted)">Best time: year-round (snow possible in winter) • Tips: parking fills fast — carpool or take transit.</small>
+            </div>
+          </article>
+
+          <article class="trail" role="listitem">
+            <img src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=4ca3f7e83a7d99a9f1b32b3be9ca58f9" alt="Mount Rainier towering over alpine meadows">
+            <div class="trail-info">
+              <strong>Mount Rainier National Park</strong>
+              <div class="trail-meta">
+                <span class="pill">Varies</span>
+                <span class="pill">Giant volcano</span>
+                <span class="pill">Strenuous options</span>
+              </div>
+              <p style="margin:.5rem 0 .25rem;color:var(--muted)">A national treasure. Options range from short meadow walks to technical glacier routes. Plan ahead for elevation & weather.</p>
+              <small style="color:var(--muted)">Best time: Jul–Sep for lower trails • Tips: check park alerts & permit requirements for mountaineering.</small>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center">
+          <button onclick="alert('Trail plan PDF download coming soon.')">Download Trail Map</button>
+          <button class="secondary" onclick="document.querySelector('#map').scrollIntoView({behavior:'smooth'})">Open Map & Directions</button>
+          <small style="color:var(--muted)">Note: Trail conditions can change — always check official park pages before you go.</small>
+        </div>
+
+      </section>
+
+      <aside id="map" class="card" aria-labelledby="map-heading">
+        <div class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2v20" stroke="#ffd166" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 12h12" stroke="#ffd166" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h2 id="map-heading">Quick Map & Local Weather</h2>
+        </div>
+
+        <div class="map" aria-hidden="false">
+          <!-- OpenStreetMap Embed focusing Seattle & nearby mountains -->
+          <iframe
+            title="Seattle mountain region map"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-122.54%2C47.35%2C-121.35%2C47.95&layer=mapnik&marker=47.6062,-122.3321"
+            style="border:0;width:100%;height:100%;"></iframe>
+        </div>
+
+        <div style="margin-top:.8rem;display:flex;gap:.5rem;align-items:center">
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>Seattle Area Weather</strong>
+              <small id="weather-time" style="color:var(--muted)">--</small>
+            </div>
+            <div id="weather" style="font-size:1.1rem;margin-top:.35rem;color:var(--muted)">Loading...</div>
+          </div>
+          <button class="secondary" id="refresh-weather">Refresh</button>
+        </div>
+      </aside>
+
+    </div>
+
+    <section id="gallery" class="card" aria-labelledby="gallery-heading" style="margin-top:1rem;">
+      <div class="section-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 7h18" stroke="#ffb86b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 7v14" stroke="#ffb86b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2 id="gallery-heading">Photo Gallery</h2>
+      </div>
+
+      <div class="gallery" aria-label="Gallery of Seattle area mountain photos">
+        <img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8b6ef79a5b86c4b4e38c4d22f9896b69" alt="Mount Rainier above green alpine meadow" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=41e9c8cf8e7b2e1a07f1b9ab6f3e4a81" alt="Hikers walking a ridge at dusk" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1526481280698-9f1ff5f8f653?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=e9b1bd7a3b1d4f9e5bb2df6c2c9f9563" alt="Evergreen forest and mountain lake" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7d843bbf2597f1b85a0d1f15b7a81a98" alt="Summit cross with panoramic view" loading="lazy">
+      </div>
+
+      <p style="color:var(--muted);margin-top:.75rem">Click an image to view a larger version.</p>
+    </section>
+
+    <section class="card" aria-labelledby="safety-heading" style="margin-top:1rem;">
+      <div class="section-title">
+        <h2 id="safety-heading">Safety & Preparation</h2>
+      </div>
+      <ul style="color:var(--muted);margin:0 0 0 1rem;padding:0.25rem 0 0 0">
+        <li>Check the latest trail and weather reports. Mountain conditions can change quickly.</li>
+        <li>Pack layers — even summer hikes can get cold at elevation. Bring rain protection.</li>
+        <li>Carry plenty of water and snacks. Many Pacific Northwest trails are steep and exposed.</li>
+        <li>Tell someone your route and expected return time; cell service is unreliable in many areas.</li>
+        <li>Respect closures and private land. Stay on trail and leave no trace.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="wildlife-heading" style="margin-top:1rem;">
+      <div class="section-title">
+        <h2 id="wildlife-heading">Flora & Fauna You May See</h2>
+      </div>
+
+      <p style="color:var(--muted)">The area is home to Douglas firs, western hemlock, alpine wildflowers in summer, black bears (rare at lower elevations but present in the Cascades), marmots, and a wide variety of birds including gray jays and eagles. Respect wildlife by keeping distance and storing food properly.</p>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <small>Copyright &copy; <span id="year"></span> Great Outdoors — Seattle. Data & images are for illustrative purposes.</small>
+    <div style="display:flex;gap:.5rem;align-items:center">
+      <a class="simple" href="https://www.nps.gov/mora/index.htm" target="_blank" rel="noopener">Mount Rainier NPS</a>
+      <a class="simple" href="https://www.fs.usda.gov/" target="_blank" rel="noopener">US Forest Service</a>
+      <a class="simple" href="https://www.wta.org" target="_blank" rel="noopener">Washington Trails Association</a>
+    </div>
+  </footer>
+
+  <!-- Gallery Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Image preview" onclick="closeModal()">
+    <img id="modal-img" alt="">
+  </div>
+
+  <script>
+    // Copyright-free weather query using Open-Meteo (no API key).
+    const weatherEl = document.getElementById('weather');
+    const weatherTime = document.getElementById('weather-time');
+
+    const seattleCoords = {lat: 47.6062, lon: -122.3321}; // Downtown Seattle
+    async function fetchWeather(lat, lon){
+      try{
+        weatherEl.textContent = 'Fetching weather...';
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,precipitation_probability`;
+        const res = await fetch(url);
+        const data = await res.json();
+        const cw = data.current_weather;
+        if(!cw){ throw new Error('No current weather'); }
+        const t = Math.round(cw.temperature);
+        const wcode = cw.weathercode;
+        const time = new Date(cw.time).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+        weatherTime.textContent = time;
+        const summary = `${t}°C — ${translateWeatherCode(wcode)}`;
+        weatherEl.textContent = summary;
+      }catch(e){
+        weatherEl.textContent = 'Weather unavailable';
+        console.warn(e);
+      }
+    }
+    function translateWeatherCode(code){
+      // simplified mapping for common codes (Open-Meteo code table)
+      if(code === 0) return 'Clear';
+      if(code === 1 || code === 2) return 'Partly cloudy';
+      if(code === 3) return 'Overcast';
+      if(code >=45 && code<=48) return 'Fog';
+      if(code>=51 && code<=67) return 'Rain';
+      if(code>=71 && code<=86) return 'Snow/Showers';
+      if(code>=95) return 'Thunderstorms';
+      return 'Mixed conditions';
+    }
+    document.getElementById('refresh-weather').addEventListener('click', () => fetchWeather(seattleCoords.lat, seattleCoords.lon));
+    fetchWeather(seattleCoords.lat, seattleCoords.lon);
+
+    // Gallery modal logic
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', e => {
+        modalImg.src = e.target.src;
+        modalImg.alt = e.target.alt || 'Photo';
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeModal(){
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    // Close with Escape
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+    });
+
+    // Small dynamic items
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Progressive enhancement: lazy load images that support it automatically via loading=lazy attributes.
+  </script>
+</body>
+</html>

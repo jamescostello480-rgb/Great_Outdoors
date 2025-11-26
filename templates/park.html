@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Great Outdoors — Seattle Park. Explore trails, wildlife, events, and volunteering opportunities in this Seattle urban oasis." />
+  <title>Great Outdoors — Seattle Park</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6fbf8;
+      --card:#ffffff;
+      --accent:#2f7a59;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --radius:12px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: light;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; background:linear-gradient(180deg,#f6fbf8 0%, #e9f4ef 100%); color:#0f172a}
+    a{color:var(--accent); text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:28px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:18px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:54px; height:54px; border-radius:11px; display:grid; place-items:center;
+      background:linear-gradient(135deg,#2f7a59 0%, #93d7a4 100%); color: #fff; font-weight:800; font-size:18px;
+      box-shadow:0 6px 18px rgba(46,117,83,0.12)
+    }
+    nav ul{display:flex; gap:16px; list-style:none; padding:0; margin:0}
+    nav a{font-weight:600; color:var(--muted)}
+    .hero{
+      display:grid; grid-template-columns:1fr; gap:18px; margin:16px 0 24px;
+      align-items:center; background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4)); padding:28px; border-radius:18px;
+      box-shadow: 0 10px 30px rgba(49, 79, 77, 0.06);
+    }
+    .hero-grid{display:grid; gap:18px; grid-template-columns: 1fr; align-items:center}
+    .hero .headline{
+      font-size:28px; line-height:1.02; margin:0 0 8px; font-weight:800; color:#032c20;
+    }
+    .hero p{margin:0; color:var(--muted)}
+    .cta{display:flex; gap:12px; margin-top:14px}
+    .btn{
+      background:var(--accent); color:white; border:0; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700;
+      box-shadow:0 6px 20px rgba(47,122,89,0.12)
+    }
+    .btn.secondary{background:transparent; border:1px solid rgba(47,122,89,0.14); color:var(--accent)}
+    .stats{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap}
+    .stat{background:var(--card); padding:10px 14px; border-radius:10px; min-width:120px; box-shadow: 0 6px 16px rgba(10,20,14,0.04)}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:18px}
+    @media (max-width:880px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      header{flex-direction:column; align-items:flex-start; gap:12px}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .card{background:var(--card); padding:14px; border-radius:12px; box-shadow:0 8px 26px rgba(10,20,14,0.04)}
+    .trail-card .meta{display:flex; justify-content:space-between; gap:10px; margin-top:10px; color:var(--muted); font-size:14px}
+    .icon{width:36px; height:36px; display:inline-grid; place-items:center; border-radius:8px; background:#effdf7; color:var(--accent); font-weight:800}
+    .features{display:flex; gap:12px; flex-wrap:wrap}
+    .feature{display:flex; gap:12px; align-items:center; padding:8px 12px; border-radius:12px; background:linear-gradient(180deg,#fff,#f8fffb); min-width:170px; box-shadow:0 4px 14px rgba(46,117,83,0.06)}
+    footer{margin-top:28px; padding:28px 0; border-top:1px solid rgba(15,23,42,0.05)}
+    .map{height:260px; border-radius:12px; overflow:hidden; border: 1px solid rgba(10,20,14,0.02)}
+    .events li{margin-bottom:12px}
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
+    .gallery img{width:100%; height:100%; object-fit:cover; border-radius:8px; display:block}
+    @media (max-width:880px){ .gallery{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:560px){ .gallery{grid-template-columns:1fr} }
+    /* Tiny interactive styles */
+    .favorite{background:#ffe8e8; color:#b83b3b}
+    .hidden{display:none}
+    .kbd{background:#f3f4f6; padding:4px 8px; border-radius:6px; font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">GO</div>
+        <div>
+          <div style="font-weight:800">Great Outdoors</div>
+          <div style="font-size:13px; color:var(--muted)">Seattle Park • Washington</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#trails">Trails</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="overview" aria-labelledby="hero-heading">
+        <div class="hero-grid">
+          <div>
+            <h1 class="headline" id="hero-heading">Great Outdoors — Seattle Park</h1>
+            <p>Discover an urban oasis of forest, meadows, and shoreline in the heart of Seattle. Trails for all abilities, rich wildlife, accessible picnic areas, and year-round ranger programs.</p>
+            <div class="cta" role="region" aria-label="Primary actions">
+              <a class="btn" href="#visit" aria-label="Plan your visit">Plan Your Visit</a>
+              <a class="btn secondary" href="#trails" aria-label="View trails">Explore Trails</a>
+            </div>
+
+            <div class="stats" aria-hidden="false">
+              <div class="stat">
+                <div style="font-weight:800; font-size:18px">1,000+ acres</div>
+                <div style="font-size:12px; color:var(--muted)">Park size</div>
+              </div>
+              <div class="stat">
+                <div style="font-weight:800; font-size:18px">15+ mi</div>
+                <div style="font-size:12px; color:var(--muted)">Trails</div>
+              </div>
+              <div class="stat">
+                <div style="font-weight:800; font-size:18px">Free</div>
+                <div style="font-size:12px; color:var(--muted)">Admission</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" aria-hidden="false">
+            <h3 style="margin-top:0">Quick facts</h3>
+            <ul style="padding-left:18px; color:var(--muted); margin:8px 0">
+              <li><strong>Established:</strong> 1898</li>
+              <li><strong>Pets:</strong> Dogs allowed on leash, some off-leash areas</li>
+              <li><strong>Facilities:</strong> Restrooms, picnic shelters, rangers' center, viewpoints</li>
+            </ul>
+            <div style="display:flex; gap:12px; align-items:center; margin-top:8px">
+              <div class="icon" aria-hidden="true">T</div>
+              <div>
+                <div style="font-weight:700">Top trail: Forest Ridge Loop</div>
+                <div style="color:var(--muted); font-size:13px">Moderate • 4.3 mi • 400 ft elev. gain</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="trails" aria-labelledby="trails-heading" style="margin-top:18px;">
+        <h2 id="trails-heading">Featured Trails</h2>
+        <p style="color:var(--muted); margin-top:6px">Choose a route by distance or difficulty — all trails are well-marked and maintained.</p>
+
+        <div class="grid" style="margin-top:14px">
+          <article class="trail-card card" aria-labelledby="trail-forest">
+            <header style="display:flex; align-items:center; justify-content:space-between">
+              <div>
+                <h3 id="trail-forest" style="margin:0">Forest Ridge Loop</h3>
+                <div style="color:var(--muted); font-size:13px">Shaded forest trail with viewpoints</div>
+              </div>
+              <button class="favorite btn secondary" data-trail="Forest Ridge Loop" aria-pressed="false" title="Mark favorite">♡</button>
+            </header>
+            <div class="meta">
+              <div>4.3 mi</div>
+              <div>Moderate</div>
+              <div>400 ft</div>
+            </div>
+            <p style="margin-top:10px; color:var(--muted); font-size:14px">Well-graded path through old-growth trees. Good for hikers and trail runners.</p>
+          </article>
+
+          <article class="trail-card card" aria-labelledby="trail-shore">
+            <header style="display:flex; align-items:center; justify-content:space-between">
+              <div>
+                <h3 id="trail-shore" style="margin:0">Shoreline Promenade</h3>
+                <div style="color:var(--muted); font-size:13px">Wide path along the water</div>
+              </div>
+              <button class="favorite btn secondary" data-trail="Shoreline Promenade" aria-pressed="false" title="Mark favorite">♡</button>
+            </header>
+            <div class="meta">
+              <div>2.1 mi</div>
+              <div>Easy</div>
+              <div>Flat</div>
+            </div>
+            <p style="margin-top:10px; color:var(--muted); font-size:14px">Wheelchair-friendly and stroller accessible — ideal for sunset walks and birdwatching.</p>
+          </article>
+
+          <article class="trail-card card" aria-labelledby="trail-meadow">
+            <header style="display:flex; align-items:center; justify-content:space-between">
+              <div>
+                <h3 id="trail-meadow" style="margin:0">Meadow Ridge</h3>
+                <div style="color:var(--muted); font-size:13px">Open meadows and vista points</div>
+              </div>
+              <button class="favorite btn secondary" data-trail="Meadow Ridge" aria-pressed="false" title="Mark favorite">♡</button>
+            </header>
+            <div class="meta">
+              <div>6.5 mi</div>
+              <div>Challenging</div>
+              <div>800 ft</div>
+            </div>
+            <p style="margin-top:10px; color:var(--muted); font-size:14px">Great for multi-hour hikes and wildflower viewing in spring and summer.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" id="activities" aria-labelledby="activities-heading" style="margin-top:18px">
+        <h2 id="activities-heading">Activities & Amenities</h2>
+        <div class="features" role="list" style="margin-top:10px">
+          <div class="feature" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12M6 6h12M6 18h12" stroke="#2f7a59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div style="font-weight:700">Guided hikes</div>
+              <div style="font-size:13px; color:var(--muted)">Weekly ranger-led programs</div>
+            </div>
+          </div>
+
+          <div class="feature" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a6 6 0 00-6 6c0 4.418 6 12 6 12s6-7.582 6-12a6 6 0 00-6-6z" stroke="#2f7a59" stroke-width="1.6" fill="#f0fff4"/></svg>
+            <div>
+              <div style="font-weight:700">Wildlife viewing</div>
+              <div style="font-size:13px; color:var(--muted)">Look for osprey, eagles, and migratory birds</div>
+            </div>
+          </div>
+
+          <div class="feature" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#2f7a59" stroke-width="1.6" fill="#f0fff4"/><path d="M8 12h8" stroke="#2f7a59" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div>
+              <div style="font-weight:700">Picnic spots</div>
+              <div style="font-size:13px; color:var(--muted)">Sheltered tables and grills</div>
+            </div>
+          </div>
+
+          <div class="feature" role="listitem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v6l4 2" stroke="#2f7a59" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div>
+              <div style="font-weight:700">Boating & shoreline</div>
+              <div style="font-size:13px; color:var(--muted)">Kayak launches and tide pools</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="events" aria-labelledby="events-heading" style="margin-top:18px">
+        <h2 id="events-heading">Upcoming Events</h2>
+        <ul class="events" style="padding-left:18px; margin-top:8px">
+          <li>
+            <strong>Forest Walk with Rangers</strong> — Sat, Dec 6 • 9:30 AM
+            <div style="color:var(--muted); font-size:13px">Learn about local flora and conservation efforts.</div>
+          </li>
+          <li>
+            <strong>Seaside Photography Meetup</strong> — Sun, Dec 14 • 3:00 PM
+            <div style="color:var(--muted); font-size:13px">Community photo walk and tips for capturing sunsets and wildlife.</div>
+          </li>
+          <li>
+            <strong>Volunteer Habitat Restoration</strong> — Sat, Dec 20 • 8:00 AM
+            <div style="color:var(--muted); font-size:13px">Help remove invasive plants and restore native habitat. Tools and training provided.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card" id="visit" aria-labelledby="visit-heading" style="margin-top:18px; display:grid; grid-template-columns:1fr 360px; gap:18px">
+        <div>
+          <h2 id="visit-heading">Plan Your Visit</h2>
+          <p style="color:var(--muted)">We recommend checking trail conditions and tide charts if you plan to go to the shoreline. Parking is limited on weekends; consider transit or biking.</p>
+
+          <div style="margin-top:12px" class="map" aria-hidden="false">
+            <!-- Replace coordinates (47.6573,-122.4058) with exact park location if desired -->
+            <iframe
+              title="Map — Great Outdoors Seattle Park"
+              width="100%" height="100%" frameborder="0" style="border:0;"
+              src="https://maps.google.com/maps?q=47.6573,-122.4058&t=m&z=14&ie=UTF8&iwloc=&output=embed" aria-hidden="false"></iframe>
+          </div>
+
+          <h3 style="margin-top:12px">Gallery</h3>
+          <div class="gallery" style="margin-top:8px">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Forest trail with sunlight" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Shoreline at sunset" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Wildflowers in the meadow" loading="lazy">
+          </div>
+        </div>
+
+        <aside class="card" aria-labelledby="contact-heading" style="height:fit-content;">
+          <h3 id="contact-heading">Visitor Services</h3>
+          <p style="margin-top:6px; color:var(--muted)">Open daily • 6:00 AM – 9:00 PM</p>
+          <p style="margin-top:6px; color:var(--muted)"><strong>Address:</strong> 1000 Park Rd, Seattle, WA</p>
+          <p style="margin-top:6px; color:var(--muted)"><strong>Phone:</strong> (206) 555-0123</p>
+
+          <hr style="border:none; height:1px; background:rgba(10,20,14,0.04); margin:12px 0;">
+
+          <h4 style="margin:0 0 8px 0">Volunteer & Newsletter</h4>
+          <form id="signup" aria-label="Signup form">
+            <label for="name" class="hidden">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Full name" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(10,20,14,0.06)">
+
+            <label for="email" class="hidden">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Email address" required style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(10,20,14,0.06); margin-top:8px">
+
+            <div style="display:flex; gap:8px; margin-top:8px; align-items:center">
+              <input type="checkbox" id="volunteer" name="volunteer" style="width:18px;height:18px">
+              <label for="volunteer" style="font-size:13px; color:var(--muted)">I'm interested in volunteering</label>
+            </div>
+
+            <button type="submit" class="btn" style="width:100%; margin-top:10px">Sign Up</button>
+            <div id="signup-msg" style="color:var(--accent); margin-top:8px; display:none;">Thanks — we'll be in touch!</div>
+          </form>
+        </aside>
+      </section>
+    </main>
+
+    <footer>
+      <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap">
+        <div style="color:var(--muted)">
+          © Great Outdoors • Seattle Park • <span class="kbd">Seattle Parks & Recreation</span>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <a href="#" title="Accessibility information" style="color:var(--muted)">Accessibility</a>
+          <a href="#" title="Report an issue" style="color:var(--muted)">Report issue</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Basic interactive behaviors: favorites, sign-up, and keyboard shortcuts
+    (function(){
+      // Favorite buttons
+      const favs = document.querySelectorAll('.favorite');
+      favs.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const pressed = btn.getAttribute('aria-pressed') === 'true';
+          btn.setAttribute('aria-pressed', String(!pressed));
+          btn.classList.toggle('favorite');
+          btn.textContent = pressed ? '♡' : '♥';
+        });
+      });
+
+      // Signup form (client-side only)
+      const form = document.getElementById('signup');
+      const msg = document.getElementById('signup-msg');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // naive validation
+        const email = form.email.value.trim();
+        const name = form.name.value.trim();
+        if (!name || !email.includes('@')) {
+          alert('Please enter a valid name and email address.');
+          return;
+        }
+        // Show success message and clear form
+        msg.style.display = 'block';
+        setTimeout(() => {
+          msg.style.display = 'none';
+          form.reset();
+        }, 3000);
+      });
+
+      // Simple keyboard shortcut: Press "t" to jump to Trails
+      window.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 't' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+          const trails = document.getElementById('trails');
+          if (trails) trails.scrollIntoView({behavior:'smooth'});
+        }
+      });
+
+      // Lightweight image fallback for visitors with JS disabled
+      const imgs = document.querySelectorAll('.gallery img');
+      imgs.forEach((img, i) => {
+        img.addEventListener('error', () => {
+          img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="#eefaf3"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="24" fill="#2f7a59">Photo not available</text></svg>'
+          );
+        })
+      });
+    })();
+  </script>
+</body>
+</html>
