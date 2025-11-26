@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great Outdoors - Seattle Waterfalls</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
   <style>
     * {
       margin: 0;
@@ -14,84 +15,222 @@
       font-family: Arial, sans-serif;
       line-height: 1.6;
       color: #333;
+      background: linear-gradient(180deg, #f0fdf4 0%, #f8fbf6 100%);
     }
     header {
-      background-color: #2c5f2d;
+      background: linear-gradient(135deg, green 0%, green 100%);
       color: white;
-      padding: 20px;
+      padding: 3rem 2rem;
       text-align: center;
+      margin: 0;
     }
     header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    header p {
+      color: #e8f5e9;
+      margin: 0;
     }
     .container {
       max-width: 1000px;
-      margin: 20px auto;
-      padding: 0 20px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    .waterfall {
-      background-color: #f4f4f4;
-      padding: 20px;
-      margin: 20px 0;
-      border-left: 5px solid #2c5f2d;
+    .waterfall-intro {
+      background: #e8f5e9;
+      padding: 3rem 1.5rem 1.5rem 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      color: #2d5016;
+      border-left: 4px solid #16a34a;
     }
-    .waterfall h2 {
-      color: #2c5f2d;
-      margin-bottom: 10px;
+    .waterfall-intro h2 {
+      color: #16a34a;
+      margin-top: 0;
     }
-    .waterfall p {
-      margin-bottom: 10px;
+    .waterfall-section {
+      margin: 2rem 0;
+    }
+    .waterfall-section h2 {
+      color: #16a34a;
+      border-bottom: 3px solid #86efac;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .waterfall-card {
+      background: white; /* Match the website background color */
+      border: 1px solid #d4edda;
+      border-left: 5px solid #16a34a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 5px rgba(22, 163, 74, 0.1);
+    }
+    .waterfall-card h3 {
+      color: #16a34a;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .waterfall-card p {
+      color: #555;
+      line-height: 1.8;
+    }
+    .feature-image {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.15);
+      margin: 1.5rem 0;
     }
     footer {
-      background-color: #2c5f2d;
+      background: linear-gradient(180deg, #15803d 0%, #16a34a 100%);
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    nav.topnav {
+      margin: 0;
+      padding: 1rem;
+      background: linear-gradient(135deg, green 0%, green 100%);
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Great Outdoors Seattle</h1>
-    <p>Explore Washington's Beautiful Waterfalls</p>
+    <p>Discover Beautiful Waterfalls Around Seattle, Washington</p>
   </header>
   
+  <nav class="topnav" style="background: linear-gradient(135deg, green 0%, green 100%); padding: 1rem; margin: 0;">
+    <a class="logo" href="/">Great Outdoors</a>
+
+    <div class="nav-item">
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <div class="dropdown">
+        <a href="{{ url_for('mountain') }}">Mountain</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <div class="dropdown">
+        <a href="{{ url_for('forest') }}">Forest</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+      <div class="dropdown">
+        <a href="{{ url_for('falls') }}">Falls</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <div class="dropdown">
+        <a href="{{ url_for('ferry') }}">Ferry</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <div class="dropdown">
+        <a href="{{ url_for('lake') }}">Lake</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <div class="dropdown">
+        <a href="{{ url_for('park') }}">Park</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+      <div class="dropdown">
+        <a href="{{ url_for('add_user') }}">Add User</a>
+      </div>
+    </div>
+  </nav>
+  
   <div class="container">
-    <h2 style="color: #2c5f2d; margin-bottom: 20px;">Popular Waterfalls Near Seattle</h2>
-    
-    <div class="waterfall">
-      <h2>Snoqualmie Falls</h2>
-      <p><strong>Location:</strong> Snoqualmie, WA (30 minutes from Seattle)</p>
-      <p><strong>Height:</strong> 270 feet</p>
-      <p>One of the most iconic waterfalls in Washington, Snoqualmie Falls offers stunning views and easy access from a scenic viewpoint.</p>
+    <div class="waterfall-intro">
+      <h2>Waterfalls</h2>
+      <p>Western Washington is home to some of the most spectacular waterfalls in the Pacific Northwest. From easily accessible falls near Seattle to remote alpine cascades, there are waterfalls for every skill level and season. Popular destinations include Snoqualmie Falls, Wallace Falls, and the waterfalls of Olympic National Park.</p>
+      
+      <img src="{{ url_for('static', filename='images/waterfall.jpg') }}" alt="Majestic waterfall cascading through lush green forest" class="feature-image">
     </div>
-    
-    <div class="waterfall">
-      <h2>Rattlesnake Falls</h2>
-      <p><strong>Location:</strong> North Bend, WA</p>
-      <p><strong>Difficulty:</strong> Moderate</p>
-      <p>A scenic 2-mile hike through lush forest leading to a beautiful waterfall with a pristine swimming pool.</p>
-    </div>
-    
-    <div class="waterfall">
-      <h2>Tokul Fall</h2>
-      <p><strong>Location:</strong> Snoqualmie, WA</p>
-      <p><strong>Height:</strong> 65 feet</p>
-      <p>An easy, family-friendly hike with a rewarding view of this picturesque waterfall.</p>
-    </div>
-    
-    <div class="waterfall">
-      <h2>Twin Falls</h2>
-      <p><strong>Location:</strong> North Bend, WA</p>
-      <p><strong>Distance:</strong> 3-mile round trip</p>
-      <p>Experience two consecutive waterfalls connected by a scenic creek, perfect for hiking and photography.</p>
-    </div>
+
+    <section id="nearby-waterfalls" class="waterfall-section">
+      <h2>Waterfalls Near Seattle</h2>
+      
+      <div class="waterfall-card">
+        <h3>Snoqualmie Falls</h3>
+        <p>One of the most iconic waterfalls in Washington at 268 feet tall. Located just 30 minutes from Seattle with easy viewing areas and a lodge at the top.</p>
+      </div>
+      
+      <div class="waterfall-card">
+        <h3>Wallace Falls</h3>
+        <p>A scenic 7.2-mile roundtrip hike featuring a multi-tiered waterfall. Popular for hikers of all levels with excellent trail conditions.</p>
+      </div>
+      
+      <div class="waterfall-card">
+        <h3>Twin Falls</h3>
+        <p>Located in the Snoqualmie Pass area, this short hike leads to a pair of beautiful cascading falls surrounded by old-growth forest.</p>
+      </div>
+    </section>
+
+    <section id="cascade-waterfalls" class="waterfall-section">
+      <h2>Cascade Waterfalls</h2>
+      
+      <div class="waterfall-card">
+        <h3>Nooksack Falls</h3>
+        <p>A spectacular 90-foot waterfall located near Bellingham. Known for turquoise blue water and accessible via a 2-mile hike.</p>
+      </div>
+      
+      <div class="waterfall-card">
+        <h3>Bridal Veil Falls</h3>
+        <p>A delicate, wispy waterfall located along Highway 2 near the town of Gold Bar. Easy to access with a short walk from the parking area.</p>
+      </div>
+      
+      <div class="waterfall-card">
+        <h3>Scenic Lakes Waterfall</h3>
+        <p>Accessed via a longer hike in the Cascade Mountains, this waterfall offers spectacular alpine views and pristine backcountry experience.</p>
+      </div>
+      
+      <div class="waterfall-card">
+        <h3>Avalanche Lily Falls</h3>
+        <p>A hidden gem waterfall in the Mount Rainier area, best visited in late summer when wildflowers are in bloom.</p>
+      </div>
+    </section>
+
+    <section id="olympic-waterfalls" class="waterfall-section">
+      <h2>Olympic Peninsula Waterfalls</h2>
+      
+      <div class="waterfall-card">
+        <h3>Marymere Falls</h3>
+        <p>Located in Olympic National Park, this 90-foot waterfall is accessed via a scenic 1.8-mile loop trail through old-growth forest.</p>
+      </div>
+      
+      <div class="waterfall-card">
+        <h3>Sol Duc Falls</h3>
+        <p>A beautiful waterfall in Sol Duc Valley featuring cascading water through a narrow gorge. Popular family-friendly hike at about 1.6 miles roundtrip.</p>
+      </div>
+      
+      <div class="waterfall-card">
+        <h3>Salmon Cascades</h3>
+        <p>A series of cascades along the Elwha River offering scenic views and opportunities to spot salmon during spawning season.</p>
+      </div>
+    </section>
   </div>
   
   <footer>
-    <p>&copy; 2024 Great Outdoors Seattle. Explore responsibly.</p>
+    <p>&copy; 2024 Great Outdoors Seattle. All rights reserved.</p>
   </footer>
 </body>
 </html>
