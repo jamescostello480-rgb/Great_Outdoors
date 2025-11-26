@@ -74,6 +74,13 @@
     .favorite{background:#ffe8e8; color:#b83b3b}
     .hidden{display:none}
     .kbd{background:#f3f4f6; padding:4px 8px; border-radius:6px; font-weight:700}
+    /* Park section styles */
+    .park-section{margin:18px 0}
+    .park-section h3{color:var(--accent); margin-bottom:8px; border-bottom:2px solid rgba(47,122,89,0.2); padding-bottom:6px}
+    .park-list{display:grid; gap:10px}
+    .park-item{background:linear-gradient(180deg,#fff,#f8fffb); border-left:3px solid var(--accent); padding:10px; border-radius:8px}
+    .park-item strong{color:#032c20}
+    .park-item p{margin:4px 0 0; font-size:13px; color:var(--muted)}
   </style>
 </head>
 <body>
@@ -91,6 +98,7 @@
         <ul>
           <li><a href="#overview">Overview</a></li>
           <li><a href="#trails">Trails</a></li>
+          <li><a href="#parks">Parks</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#visit">Visit</a></li>
         </ul>
@@ -194,6 +202,75 @@
             </div>
             <p style="margin-top:10px; color:var(--muted); font-size:14px">Great for multi-hour hikes and wildflower viewing in spring and summer.</p>
           </article>
+        </div>
+      </section>
+
+      <section class="card" id="parks" aria-labelledby="parks-heading" style="margin-top:18px;">
+        <h2 id="parks-heading">Parks</h2>
+        <p style="color:var(--muted); margin-top:6px">Western Washington offers diverse parks, including national parks like Mount Rainier, Olympic, and North Cascades, and numerous state parks such as Deception Pass, Wallace Falls, and Dash Point. These parks provide a wide range of activities, from hiking and beach access to camping and historical exploration.</p>
+
+        <div class="park-section">
+          <h3>National Parks</h3>
+          <div class="park-list">
+            <div class="park-item">
+              <strong>Mount Rainier National Park</strong>
+              <p>Features stunning mountain views and diverse ecosystems.</p>
+            </div>
+            <div class="park-item">
+              <strong>Olympic National Park</strong>
+              <p>A UNESCO World Heritage Site known for its variety of ecosystems, including temperate rainforests, rugged coastline, and mountains.</p>
+            </div>
+            <div class="park-item">
+              <strong>North Cascades National Park</strong>
+              <p>Offers impressive mountain scenery.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="park-section">
+          <h3>State Parks and Other Notable Areas</h3>
+          <div class="park-list">
+            <div class="park-item">
+              <strong>Deception Pass State Park</strong>
+              <p>A popular spot with scenic views and opportunities for activities like canoeing.</p>
+            </div>
+            <div class="park-item">
+              <strong>Wallace Falls State Park</strong>
+              <p>Features a multi-tiered waterfall and a network of trails for hiking and biking.</p>
+            </div>
+            <div class="park-item">
+              <strong>Dash Point State Park</strong>
+              <p>Located on the Puget Sound with a large amount of saltwater shoreline, popular for water recreation and day-use.</p>
+            </div>
+            <div class="park-item">
+              <strong>Cape Disappointment State Park</strong>
+              <p>Situated at the mouth of the Columbia River, offering historical sites and ocean views.</p>
+            </div>
+            <div class="park-item">
+              <strong>Saltwater State Park</strong>
+              <p>Accessible from Interstate 5, this park features a beach, tide pools, and an underwater artificial reef for diving.</p>
+            </div>
+            <div class="park-item">
+              <strong>Fort Worden Historical State Park</strong>
+              <p>A historic park on the Admiralty Inlet with gun batteries, museums, and beaches.</p>
+            </div>
+            <div class="park-item">
+              <strong>Saint Edward State Park</strong>
+              <p>A large park on the shores of Lake Washington with beaches, forests, and trails.</p>
+            </div>
+            <div class="park-item">
+              <strong>Lake Wenatchee State Park</strong>
+              <p>Known for its beautiful scenery and activities like horseback riding.</p>
+            </div>
+            <div class="park-item">
+              <strong>Lime Kiln Point State Park</strong>
+              <p>A popular whale-watching spot on the San Juan Islands.</p>
+            </div>
+            <div class="park-item">
+              <strong>Palouse Falls State Park</strong>
+              <p>A unique park featuring a stunning waterfall.</p>
+            </div>
+          </div>
         </div>
       </section>
 

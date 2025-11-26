@@ -108,6 +108,11 @@
     .map-card iframe{width:100%;height:280px;border:0;border-radius:8px}
     .nearby {display:grid;grid-template-columns:1fr 1fr;gap:12px}
     @media (max-width:560px){.nearby{grid-template-columns:1fr}}
+    .forest-section{background:white;padding:18px;border-left:4px solid var(--accent);margin:16px 0;border-radius:8px}
+    .forest-section h3{color:var(--accent);margin-top:12px;margin-bottom:8px}
+    .forest-section h3:first-child{margin-top:0}
+    .forest-section ul{margin:8px 0;padding-left:20px;color:var(--muted)}
+    .forest-section li{margin-bottom:6px}
     footer{padding:28px 20px;margin-top:36px;background:linear-gradient(0deg,#07221a,#07221a);color:#e8f7ee}
     .subscribe{display:flex;gap:8px;align-items:center}
     .input{padding:10px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);flex:1}
@@ -128,6 +133,7 @@
       </div>
       <nav>
         <ul>
+          <li><a href="#forests">Forests</a></li>
           <li><a href="#trails">Trails</a></li>
           <li><a href="#activities">Activities</a></li>
           <li><a href="#map">Map</a></li>
@@ -173,6 +179,39 @@
 
   <main>
     <div class="grid card" style="margin-top:-28px">
+      <section id="forests" aria-labelledby="forests-heading">
+        <h2 id="forests-heading">Forests</h2>
+        <p style="color:var(--muted);margin-top:6px">Western Washington offers diverse forests, including the temperate rainforests of Olympic National Park (like the Hoh Rainforest), the extensive Mt. Baker-Snoqualmie National Forest with the Mount Baker Wilderness, and the Gifford Pinchot National Forest. For state-managed lands, visit areas like the Tahuya and Green Mountain State Forests for recreation or Tiger Mountain and Raging River State Forests.</p>
+
+        <div class="forest-section">
+          <h3>National Parks and Forests</h3>
+          <ul>
+            <li><strong>Olympic National Forests:</strong> Features lush temperate rainforests like the Hoh, Quinault, and Queets, known for their massive trees and mossy landscapes.</li>
+            <li><strong>Mt. Baker-Snoqualmie National Forest:</strong> Stretches along the Cascades from the Canadian border to Mt. Rainier National Park and includes the Mount Baker Wilderness, offering rugged mountain and forest scenery.</li>
+            <li><strong>Gifford Pinchot National Forest:</strong> Located south of Mt. Rainier, this is a popular area for recreation and overlanding.</li>
+          </ul>
+        </div>
+
+        <div class="forest-section">
+          <h3>State Forests</h3>
+          <ul>
+            <li><strong>Tahuya and Green Mountain State Forests:</strong> Located in Mason and Kitsap counties, these are popular for off-road vehicles, hiking, mountain biking, and horseback riding.</li>
+            <li><strong>Tiger Mountain and Raging River State Forests:</strong> Easily accessible areas for various forest activities.</li>
+            <li><strong>Elbe Hills and Tahoma State Forests:</strong> Offer systems for off-road vehicles, horseback riding, and winter activities like cross-country skiing and snowshoeing at Tahoma State Forest.</li>
+            <li><strong>Capitol State Forest:</strong> Another large state forest offering recreation opportunities.</li>
+          </ul>
+        </div>
+
+        <div class="forest-section">
+          <h3>Other Notable Areas</h3>
+          <ul>
+            <li><strong>Hoh Rain Forest:</strong> A specific and iconic part of Olympic National Park, famous for the Hall of Mosses and Spruce Nature trails.</li>
+            <li><strong>Grove of the Patriarchs:</strong> A unique grove of old-growth trees within Mount Rainier National Park.</li>
+            <li><strong>Ginkgo Petrified Forest State Park:</strong> A unique park that showcases ancient petrified trees.</li>
+          </ul>
+        </div>
+      </section>
+
       <section id="trails" aria-labelledby="trails-heading">
         <h2 id="trails-heading">Top Trails & Hikes</h2>
         <p style="color:var(--muted);margin-top:6px">Hand-picked trails across Seattle's forest parks. Filter by difficulty or experience the scenic routes.</p>
@@ -273,6 +312,7 @@
         <div style="color:rgba(255,255,255,0.85)">Seattle Forests Guide — local trails & safety tips</div>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
+        <a href="#forests" style="color:inherit;text-decoration:none;opacity:.9">Forests</a>
         <a href="#trails" style="color:inherit;text-decoration:none;opacity:.9">Trails</a>
         <a href="#map" style="color:inherit;text-decoration:none;opacity:.9">Map</a>
         <a href="#" style="color:inherit;text-decoration:none;opacity:.9">Accessibility</a>

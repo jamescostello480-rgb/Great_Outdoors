@@ -21,6 +21,10 @@
       padding: 2rem;
       text-align: center;
     }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
     nav {
       background-color: #0f2438;
       padding: 1rem;
@@ -38,9 +42,26 @@
       margin: 2rem auto;
       padding: 0 1rem;
     }
+    .lake-intro {
+      background: #f4f4f4;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      color: #555;
+    }
+    .lake-section {
+      margin: 2rem 0;
+    }
+    .lake-section h2 {
+      color: #1e3a5f;
+      border-bottom: 3px solid #2d5a7b;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
     .lake-card {
       background: white;
       border: 1px solid #ddd;
+      border-left: 5px solid #1e3a5f;
       border-radius: 8px;
       padding: 1.5rem;
       margin: 1rem 0;
@@ -49,6 +70,11 @@
     .lake-card h3 {
       color: #1e3a5f;
       margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .lake-card p {
+      color: #555;
+      line-height: 1.8;
     }
     footer {
       background-color: #0f2438;
@@ -67,33 +93,78 @@
   
   <nav>
     <a href="#home">Home</a>
-    <a href="#lakes">Lakes</a>
-    <a href="#activities">Activities</a>
-    <a href="#contact">Contact</a>
+    <a href="#urban-lakes">Urban Lakes</a>
+    <a href="#alpine-lakes">Alpine Lakes</a>
+    <a href="#notable-lakes">Notable Lakes</a>
   </nav>
   
   <div class="container">
-    <h2>Popular Lakes Near Seattle</h2>
-    
-    <div class="lake-card">
-      <h3>Lake Union</h3>
-      <p>Located in the heart of Seattle, Lake Union offers stunning views, houseboats, and water activities including kayaking and paddleboarding.</p>
+    <div class="lake-intro">
+      <h2>Lakes</h2>
+      <p>Western Washington offers a wide variety of lakes, from urban spots like Lake Union and Lake Washington to more remote alpine destinations such as Colchuck Lake and Lake Crescent. Popular options near the Seattle area include the accessible Lake Sammamish State Park and the wildlife-rich Anderson Lake State Park, while the Mount Baker-Snoqualmie National Forest features beautiful spots like Watson Lakes.</p>
     </div>
-    
-    <div class="lake-card">
-      <h3>Green Lake</h3>
-      <p>A freshwater lake perfect for swimming, walking, and picnicking. The scenic 2.8-mile loop trail is ideal for runners and cyclists.</p>
-    </div>
-    
-    <div class="lake-card">
-      <h3>Lake Washington</h3>
-      <p>Washington's second-largest natural lake, offering beaches, fishing, and beautiful mountain views. Great for families and water sports enthusiasts.</p>
-    </div>
-    
-    <div class="lake-card">
-      <h3>Lake Sammamish</h3>
-      <p>Located east of Seattle, this pristine lake features parks, swimming areas, and is popular for boating and fishing.</p>
-    </div>
+
+    <section id="urban-lakes" class="lake-section">
+      <h2>Lakes Near Urban Areas</h2>
+      
+      <div class="lake-card">
+        <h3>Lake Washington</h3>
+        <p>The largest lake in the county, offering city views and activities like sailing and kayaking.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Lake Sammamish</h3>
+        <p>Known for its state park which features swimming beaches, trails, and sports fields.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Lake Union</h3>
+        <p>A popular spot for kayaking with views of the Space Needle and abundant wildlife like turtles.</p>
+      </div>
+    </section>
+
+    <section id="alpine-lakes" class="lake-section">
+      <h2>Alpine and Mountain Lakes</h2>
+      
+      <div class="lake-card">
+        <h3>Colchuck Lake</h3>
+        <p>Famous for its iconic views of towering peaks.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Crescent Lake</h3>
+        <p>A stunningly clear lake in the Olympic National Park, ideal for kayaking and hiking to Marymere Falls.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Watson Lakes</h3>
+        <p>A pair of alpine lakes in the Mount Baker-Snoqualmie National Forest that are great for day trips or overnight camping.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Snow Lake</h3>
+        <p>A popular hiking destination that offers beautiful reflections and is perfect for a summer day trip.</p>
+      </div>
+    </section>
+
+    <section id="notable-lakes" class="lake-section">
+      <h2>Other Notable Lakes</h2>
+      
+      <div class="lake-card">
+        <h3>Diablo Lake</h3>
+        <p>Located in the North Cascades Mountains and known for its vibrant turquoise color.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Anderson Lake State Park</h3>
+        <p>Features a freshwater marsh and diverse wildlife, accessible via hiking, biking, and equestrian trails.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Mayfield Lake</h3>
+        <p>A clear and shallow lake with a waterfall, offering swimming and camping opportunities.</p>
+      </div>
+    </section>
   </div>
   
   <footer>
