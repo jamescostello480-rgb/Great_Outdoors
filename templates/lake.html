@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great Outdoors - Seattle Lakes</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
   <style>
     * {
       margin: 0;
@@ -16,7 +17,7 @@
       color: #333;
     }
     header {
-      background: linear-gradient(135deg, #1e3a5f, #2d5a7b);
+      background: linear-gradient(135deg, #1e5a96 0%, #2b8cbd 100%);
       color: white;
       padding: 2rem;
       text-align: center;
@@ -24,18 +25,6 @@
     header h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
-    }
-    nav {
-      background-color: #0f2438;
-      padding: 1rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
     }
     .container {
       max-width: 1000px;
@@ -53,7 +42,7 @@
       margin: 2rem 0;
     }
     .lake-section h2 {
-      color: #1e3a5f;
+      color: #1e5a96;
       border-bottom: 3px solid #2d5a7b;
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
@@ -61,20 +50,28 @@
     .lake-card {
       background: white;
       border: 1px solid #ddd;
-      border-left: 5px solid #1e3a5f;
+      border-left: 5px solid #1e5a96;
       border-radius: 8px;
       padding: 1.5rem;
       margin: 1rem 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     .lake-card h3 {
-      color: #1e3a5f;
+      color: #1e5a96;
       margin-bottom: 0.5rem;
       font-size: 1.2rem;
     }
     .lake-card p {
       color: #555;
       line-height: 1.8;
+    }
+    .feature-image {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      margin: 1.5rem 0;
     }
     footer {
       background-color: #0f2438;
@@ -90,18 +87,80 @@
     <h1>Great Outdoors Seattle</h1>
     <p>Explore Beautiful Lakes Around Seattle, Washington</p>
   </header>
-  
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#urban-lakes">Urban Lakes</a>
-    <a href="#alpine-lakes">Alpine Lakes</a>
-    <a href="#notable-lakes">Notable Lakes</a>
+
+  <nav class="topnav">
+    <a class="logo" href="/">Great Outdoors</a>
+
+    <div class="nav-item">
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
   
   <div class="container">
     <div class="lake-intro">
       <h2>Lakes</h2>
       <p>Western Washington offers a wide variety of lakes, from urban spots like Lake Union and Lake Washington to more remote alpine destinations such as Colchuck Lake and Lake Crescent. Popular options near the Seattle area include the accessible Lake Sammamish State Park and the wildlife-rich Anderson Lake State Park, while the Mount Baker-Snoqualmie National Forest features beautiful spots like Watson Lakes.</p>
+      
+      <img src="{{ url_for('static', filename='images/lake.jpg') }}" alt="Pristine alpine lake surrounded by mountains and forest" class="feature-image">
     </div>
 
     <section id="urban-lakes" class="lake-section">

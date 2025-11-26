@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seattle Ferry - Great Outdoors</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
   <style>
     * {
       margin: 0;
@@ -36,22 +37,6 @@
       border-radius: 8px;
       margin: 2rem 0;
     }
-    .ferry-routes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    .route-card {
-      background: white;
-      padding: 1.5rem;
-      border-left: 4px solid #1e5a96;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .route-card h3 {
-      color: #1e5a96;
-      margin-bottom: 0.5rem;
-    }
     .route-section {
       background: white;
       padding: 1.5rem;
@@ -76,6 +61,14 @@
       padding: 1.5rem;
       margin-top: 2rem;
     }
+    .hero-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      margin: 1.5rem 0;
+    }
   </style>
 </head>
 <body>
@@ -84,10 +77,79 @@
     <p>Explore the Great Outdoors of Washington State</p>
   </header>
 
+  <nav class="topnav">
+    <a class="logo" href="/">Great Outdoors</a>
+
+    <div class="nav-item">
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
     <section class="ferry-info">
       <h2>Ferries</h2>
       <p>You can visit many places via Western Washington State Ferries, including the San Juan Islands (from Anacortes) and the Olympic Peninsula (from Seattle, Edmonds, or Tacoma). Key routes from Seattle include trips to Bainbridge Island and Bremerton, while other major routes connect Mukilteo to Clinton and Port Townsend to Coupeville.</p>
+      
+      <img src="{{ url_for('static', filename='images/ferry.jpg') }}" alt="Washington State Ferry on Puget Sound with mountain views" class="hero-image">
     </section>
 
     <h2>Major Ferry Routes and Destinations</h2>

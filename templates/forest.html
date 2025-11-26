@@ -5,183 +5,166 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Great Outdoors: Explore Seattle's forests, trails, wildlife, and outdoor activities." />
   <title>Great Outdoors — Seattle Forests</title>
-
-  <!-- Google Font -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --bg:#0b1a14;
-      --card:#f6f9f5;
-      --accent:#138f5c;
-      --muted:#6b7b73;
-      --glass: rgba(255,255,255,0.07);
-      --maxWidth:1100px;
+    :root {
+      --bg: #f0fdf4; /* Light background color */
+      --card: white; /* Card background color */
+      --accent: #16a34a; /* Accent color */
+      --muted: #6b7b73; /* Muted text color */
+      --glass: rgba(255, 255, 255, 0.07);
+      --maxWidth: 1100px;
       color-scheme: light dark;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      margin:0;
-      background:linear-gradient(180deg, #e9f2ee 0%, #f9fbfa 50%);
-      color:#07221a;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 0;
+      background: linear-gradient(180deg, #f0fdf4 0%, #f8fbf6 100%); /* Match index.html background */
+      color: #333; /* Dark text color */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
     }
-    header{
-      background:rgba(3,45,28,0.9);
-      color:#fff;
-      padding:18px 20px;
-      position:sticky;
-      top:0;
-      z-index:40;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    header {
+      background: linear-gradient(135deg, green 0%, green 100%); /* Match index.html header */
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 0;
     }
-    .container{max-width:var(--maxWidth); margin:0 auto; padding:0 20px}
-    .nav{
-      display:flex;gap:18px;align-items:center;justify-content:space-between;
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
     }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
-    .logo {
-      width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#13a45f,#0b6643);
-      display:grid;place-items:center;color:white;font-weight:700;
-      box-shadow: 0 8px 24px rgba(8,62,44,.12);
+    header p {
+      color: #e8f5e9;
+      margin: 0;
     }
-    nav ul{display:flex;gap:12px;margin:0;padding:0;list-style:none}
-    nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:7px 10px;border-radius:8px;font-weight:600}
-    nav a:hover{background:rgba(255,255,255,0.04)}
-    .hero{
-      min-height:56vh;
-      display:grid;
-      align-items:center;
-      margin-bottom:28px;
-      position:relative;
-      overflow:hidden;
+    .container {
+      max-width: var(--maxWidth);
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    .hero .bg{
-      position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=c7bf1d2a9f77e77a4a8a4f6bb403f6bb');
-      background-size:cover;background-position:center;z-index:0;
-      filter:brightness(.55);
-      transform:scale(1.03);
+    .feature-image {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(2, 26, 16, 0.12);
+      margin: 18px 0;
     }
-    .hero .overlay{
-      position:relative;z-index:5;
-      padding:48px 20px;
-      color:white;text-shadow:0 2px 12px rgba(0,0,0,0.4);
-      display:flex;align-items:center;gap:28px;
+    footer {
+      padding: 28px 20px;
+      margin-top: 36px;
+      background: linear-gradient(0deg, #07221a, #07221a);
+      color: #e8f7ee;
     }
-    .hero h1{font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 8px;font-weight:800}
-    .sub{color:#e7fff1;opacity:0.95;margin:0;font-weight:500}
-    .cta{display:flex;gap:10px;align-items:center}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700;
-      box-shadow:0 6px 18px rgba(19,143,92, .2);cursor:pointer;
+    .forest-section {
+      background: var(--card); /* Card background */
+      padding: 18px;
+      border-left: 4px solid var(--accent);
+      margin: 16px 0;
+      border-radius: 8px;
     }
-    main{padding-bottom:48px}
-    .grid{
-      display:grid;gap:22px;
-      grid-template-columns: 1fr 320px;
-      max-width:var(--maxWidth);
-      margin:24px auto;padding:0 20px;
-      align-items:start;
+    .forest-section h3 {
+      color: var(--accent);
+      margin-top: 12px;
+      margin-bottom: 8px;
     }
-    @media (max-width:900px){ .grid{grid-template-columns:1fr} .hero .overlay{flex-direction:column;align-items:flex-start;padding:28px} }
-    .card{
-      background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 22px rgba(2,26,16,0.06);
+    .forest-section ul {
+      margin: 8px 0;
+      padding-left: 20px;
+      color: var(--muted);
     }
-    .trail-list .trail{
-      display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;border:1px solid rgba(3,45,28,0.06);background:linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,0.98));
+    .forest-section li {
+      margin-bottom: 6px;
     }
-    .trail .meta{width:80px;height:80px;border-radius:8px;flex-shrink:0;background-size:cover;background-position:center}
-    .trail h3{margin:0;font-size:1.025rem}
-    .trail p{margin:4px 0 0; color:var(--muted);font-size:.95rem}
-    .badge{display:inline-block;background:var(--glass);padding:6px 8px;border-radius:999px;font-weight:700;color:var(--muted)}
-    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-    .filter-btn{padding:8px 12px;border-radius:999px;border:1px solid rgba(3,45,28,.06);background:white;cursor:pointer}
-    .filter-btn.active{background:var(--accent);color:white;border-color:rgba(0,0,0,0.06)}
-    .filters small{color:var(--muted);display:block;width:100%}
-    .wildlife-list{display:flex;flex-wrap:wrap;gap:8px}
-    .wildlife-item{display:flex;align-items:center;gap:10px;padding:8px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#f4f7f4)}
-    .map-card iframe{width:100%;height:280px;border:0;border-radius:8px}
-    .nearby {display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:560px){.nearby{grid-template-columns:1fr}}
-    .forest-section{background:white;padding:18px;border-left:4px solid var(--accent);margin:16px 0;border-radius:8px}
-    .forest-section h3{color:var(--accent);margin-top:12px;margin-bottom:8px}
-    .forest-section h3:first-child{margin-top:0}
-    .forest-section ul{margin:8px 0;padding-left:20px;color:var(--muted)}
-    .forest-section li{margin-bottom:6px}
-    footer{padding:28px 20px;margin-top:36px;background:linear-gradient(0deg,#07221a,#07221a);color:#e8f7ee}
-    .subscribe{display:flex;gap:8px;align-items:center}
-    .input{padding:10px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);flex:1}
-    small.note{display:block;color:rgba(255,255,255,0.75);margin-top:6px}
-    .back-to-top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:white;padding:10px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(9,60,43,.2)}
-    .hidden{display:none!important}
   </style>
 </head>
 <body>
   <header>
-    <div class="container nav" role="navigation" aria-label="Main navigation">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">GO</div>
-        <div>
-          <div style="font-size:0.95rem">Great Outdoors</div>
-          <div style="font-size:0.78rem;color:rgba(255,255,255,0.82)">Seattle Forest Guide</div>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#forests">Forests</a></li>
-          <li><a href="#trails">Trails</a></li>
-          <li><a href="#activities">Activities</a></li>
-          <li><a href="#map">Map</a></li>
-          <li><a href="#tips">Tips</a></li>
-        </ul>
-      </nav>
-    </div>
+    <h1>🌲 Seattle Forest Guide</h1>
+    <p>Explore the Great Outdoors of Washington State</p>
   </header>
 
-  <section class="hero" role="banner" aria-labelledby="hero-title">
-    <div class="bg" role="img" aria-label="Seattle forest trail with dappled sunlight"></div>
-    <div class="overlay container">
-      <div style="flex:1;max-width:860px">
-        <h1 id="hero-title">Explore Seattle's Forests — Trails, Wildlife & Outdoor Tips</h1>
-        <p class="sub">Discover nearby parks, family-friendly trails, wildlife viewing tips, and safe hiking routes inside Seattle's forested neighborhoods — from Discovery Park to Seward Park.</p>
-        <div style="margin-top:14px" class="cta">
-          <button class="btn" onclick="document.getElementById('trails').scrollIntoView({behavior:'smooth'})">Find Trails</button>
-          <a href="#map" class="btn" style="background:white;color:var(--accent);font-weight:700;border:1px solid rgba(19,143,92,.08);box-shadow:none;text-decoration:none;padding:10px 14px;border-radius:10px">Open Map</a>
-        </div>
-      </div>
+  <nav class="topnav">
+    <a class="logo" href="/">Great Outdoors</a>
 
-      <aside style="min-width:260px;max-width:320px">
-        <div class="card">
-          <h4 style="margin:0 0 8px">Today in Seattle</h4>
-          <p style="margin:0 0 12px;color:var(--muted)">Current conditions and reminders for a safe forest trip.</p>
-          <div style="display:flex;gap:10px;align-items:center;justify-content:space-between">
-            <div style="font-weight:700">Weather</div>
-            <div style="text-align:right">
-              <div>65°F / 18°C</div>
-              <small style="color:var(--muted)">Partly Cloudy</small>
-            </div>
-          </div>
-          <hr style="border:none;border-top:1px dashed rgba(3,45,28,.06);margin:12px 0">
-          <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
-            <small class="badge">Dog Friendly</small>
-            <small class="badge">Family Trails</small>
-            <small class="badge">Accessible</small>
-          </div>
-        </div>
-      </aside>
+    <div class="nav-item">
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+        </ul>
+      </div>
     </div>
-  </section>
+
+    <div class="nav-item">
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <main>
-    <div class="grid card" style="margin-top:-28px">
-      <section id="forests" aria-labelledby="forests-heading">
-        <h2 id="forests-heading">Forests</h2>
+    <div class="container">
+      <section id="forests">
+        <h2>Forests</h2>
         <p style="color:var(--muted);margin-top:6px">Western Washington offers diverse forests, including the temperate rainforests of Olympic National Park (like the Hoh Rainforest), the extensive Mt. Baker-Snoqualmie National Forest with the Mount Baker Wilderness, and the Gifford Pinchot National Forest. For state-managed lands, visit areas like the Tahuya and Green Mountain State Forests for recreation or Tiger Mountain and Raging River State Forests.</p>
+
+        <img src="{{ url_for('static', filename='images/forest.jpg') }}" alt="Lush green forest with sunlight filtering through trees" class="feature-image">
 
         <div class="forest-section">
           <h3>National Parks and Forests</h3>
@@ -211,252 +194,11 @@
           </ul>
         </div>
       </section>
-
-      <section id="trails" aria-labelledby="trails-heading">
-        <h2 id="trails-heading">Top Trails & Hikes</h2>
-        <p style="color:var(--muted);margin-top:6px">Hand-picked trails across Seattle's forest parks. Filter by difficulty or experience the scenic routes.</p>
-
-        <div class="filters" style="margin-top:12px" aria-hidden="false">
-          <div>
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="easy">Easy</button>
-            <button class="filter-btn" data-filter="moderate">Moderate</button>
-            <button class="filter-btn" data-filter="hard">Hard</button>
-          </div>
-          <small class="note">Tip: Tap any trail to expand details and see tips, length, and what to expect.</small>
-        </div>
-
-        <div id="trailList" class="trail-list" style="display:grid;gap:12px;margin-top:12px">
-          <!-- Trail items are injected by JS for maintainability -->
-        </div>
-
-      </section>
-
-      <aside>
-        <div class="card">
-          <h3 id="activities">Popular Activities</h3>
-          <ul style="padding-left:20px;margin:12px 0;color:var(--muted)">
-            <li>Forest walking & interpretive trails</li>
-            <li>Birdwatching & nature photography</li>
-            <li>Mountain biking (designated trails)</li>
-            <li>Picnics, family outings, and seasonal events</li>
-          </ul>
-
-          <h3 style="margin-top:12px">Wildlife to Spot</h3>
-          <div class="wildlife-list" style="margin-top:8px">
-            <div class="wildlife-item"><img src="https://images.unsplash.com/photo-1540573133985-87b6da08060b?q=80&w=120&auto=format&fit=crop&ixlib=rb-4.0.3&s=7e8b3f7c5d8e9a1b2c3d4e5f6g7h8i9j" alt="Soaring bald eagle" width="40" height="40" style="border-radius:6px;object-fit:cover"><span>Bald eagles</span></div>
-            <div class="wildlife-item"><img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?q=80&w=120&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p" alt="Deer in forest" width="40" height="40" style="border-radius:6px;object-fit:cover"><span>Black-tailed deer</span></div>
-            <div class="wildlife-item"><img src="https://images.unsplash.com/photo-1584162228063-5231ce67f58f?q=80&w=120&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a9b0c1d2e3f4g5h6i7j8k9l0m1n2o3p" alt="Raccoon portrait" width="40" height="40" style="border-radius:6px;object-fit:cover"><span>Raccoons & small mammals</span></div>
-          </div>
-
-          <div style="margin-top:16px" class="map-card">
-            <h4 style="margin:0 0 8px">Seattle Parks Map</h4>
-            <p style="margin:0 0 8px;color:var(--muted)">Zoom in to find local parks & trailheads around Seattle.</p>
-            <div id="map" aria-label="OpenStreetMap embed">
-              <iframe title="Seattle and parks" src="https://www.openstreetmap.org/export/embed.html?bbox=-122.4755859375%2C47.49623778315764%2C-122.22412109375%2C47.67980913449429&layer=mapnik" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:14px">
-          <h3>Nearby Parks</h3>
-          <div class="nearby" style="margin-top:8px">
-            <div>
-              <strong>Discovery Park</strong>
-              <div style="color:var(--muted)">Vast shoreline, forest trails, lighthouse views, popular for sunset walks.</div>
-            </div>
-            <div>
-              <strong>Seward Park</strong>
-              <div style="color:var(--muted)">Urban old-growth forest with lakeside trails and interpretive signage.</div>
-            </div>
-            <div>
-              <strong>Carkeek Park</strong>
-              <div style="color:var(--muted)">Streams, wetlands & Puget Sound views. Great for kids & families.</div>
-            </div>
-            <div>
-              <strong>Madrona Park</strong>
-              <div style="color:var(--muted)">Smaller forested area with waterfront access and quiet trails.</div>
-            </div>
-          </div>
-        </div>
-
-      </aside>
-    </div>
-
-    <div class="container" style="max-width:var(--maxWidth);padding:0 20px;margin-top:20px">
-      <section id="tips" class="card" aria-labelledby="tips-heading">
-        <h2 id="tips-heading">Safety & Trip Planning</h2>
-        <ul style="margin:12px 0;color:var(--muted)">
-          <li>Check trail conditions before heading out, especially after stormy weather.</li>
-          <li>Pack water, snacks, a small first-aid kit, and a weather-appropriate layer.</li>
-          <li>Respect wildlife: observe from a distance and never feed animals.</li>
-          <li>Keep to designated trails and leave no trace—carry out what you carry in.</li>
-        </ul>
-      </section>
-
-      <section id="newsletter" class="card" style="margin-top:18px">
-        <h3>Join our outdoor updates</h3>
-        <form id="subscribeForm" class="subscribe" onsubmit="event.preventDefault();subscribe();">
-          <input id="email" class="input" type="email" aria-label="Your email address" placeholder="Enter your email" required>
-          <button class="btn" type="submit">Subscribe</button>
-        </form>
-        <small class="note">We share seasonal guides, trail highlights, and safety tips. Unsubscribe anytime.</small>
-      </section>
     </div>
   </main>
 
   <footer>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>
-        <strong>Great Outdoors</strong>
-        <div style="color:rgba(255,255,255,0.85)">Seattle Forests Guide — local trails & safety tips</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <a href="#forests" style="color:inherit;text-decoration:none;opacity:.9">Forests</a>
-        <a href="#trails" style="color:inherit;text-decoration:none;opacity:.9">Trails</a>
-        <a href="#map" style="color:inherit;text-decoration:none;opacity:.9">Map</a>
-        <a href="#" style="color:inherit;text-decoration:none;opacity:.9">Accessibility</a>
-      </div>
-    </div>
+    <p>&copy; 2024 Great Outdoors Seattle - Forest Guide</p>
   </footer>
-
-  <button class="back-to-top" title="Back to top" aria-hidden="false" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-  <script>
-    // Minimal trail dataset
-    const trails = [
-      {
-        id: 'discovery-loop',
-        name: 'Discovery Park Loop',
-        difficulty: 'moderate',
-        length: '2.8 mi',
-        park: 'Discovery Park',
-        img: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=70b30c2f6105590aefa87a1a0bbe7fef',
-        desc: 'A scenic loop with mixed forest, bluff views, and coastal shoreline. Excellent for birdwatching and sunsets.',
-        tips: ['Popular on weekends — arrive early', 'Bring wind layer and water']
-      },
-      {
-        id: 'seward-park',
-        name: 'Seward Park Loop',
-        difficulty: 'easy',
-        length: '2.4 mi',
-        park: 'Seward Park',
-        img: 'https://images.unsplash.com/photo-1547592166-6cf89b8b2e3e?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=bdce6b95f4f9bd386bbfa41c8e8ab6f9',
-        desc: 'A popular lakeside loop on an old-growth forested peninsula. Wide paths and interpretive signage.',
-        tips: ['Every trail offers restroom access', 'Great for kids and strollers']
-      },
-      {
-        id: 'carkeek-trail',
-        name: 'Carkeek Park Trail',
-        difficulty: 'easy',
-        length: '1.9 mi',
-        park: 'Carkeek Park',
-        img: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=5f416f4d4f48beaa7b91f6c4b9a2b1a4',
-        desc: 'Streams and wetlands combine with forested trails. Excellent for families and nature study.',
-        tips: ['Bring boots after heavy rain', 'Be mindful of stream crossings']
-      },
-      {
-        id: 'lighthouse-ledge',
-        name: 'West Point Lighthouse Trail',
-        difficulty: 'hard',
-        length: '4.0 mi',
-        park: 'Discovery Park',
-        img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=6ed765b3eb334b3cf1f0f0b2b3b6d2f6',
-        desc: 'Longer route with some steep sections leading to the lighthouse and shoreline bluffs.',
-        tips: ['Steep stairs — bring extra water', 'Not ideal for small children to hike alone']
-      }
-    ];
-
-    const trailListEl = document.getElementById('trailList');
-
-    function createTrailCard(trail){
-      const div = document.createElement('div');
-      div.className = 'trail';
-      div.dataset.difficulty = trail.difficulty;
-
-      div.innerHTML = `
-        <div class="meta" style="background-image:url('${trail.img}')" aria-hidden="true"></div>
-        <div style="flex:1">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
-            <div>
-              <h3>${trail.name}</h3>
-              <div style="color:var(--muted);font-size:.95rem">${trail.park} • ${trail.length}</div>
-            </div>
-            <div style="text-align:right">
-              <div class="badge">${capitalize(trail.difficulty)}</div>
-              <div style="margin-top:6px"><button class="btn" onclick="toggleDetails('${trail.id}')">Details</button></div>
-            </div>
-          </div>
-          <div id="details-${trail.id}" style="display:none;margin-top:10px;color:var(--muted)">
-            <p style="margin:0 0 8px">${trail.desc}</p>
-            <strong>Trail Tips:</strong>
-            <ul style="margin:6px 0 0;padding-left:18px">
-              ${trail.tips.map(t => `<li>${t}</li>`).join('')}
-            </ul>
-          </div>
-        </div>
-      `;
-      return div;
-    }
-
-    function renderTrails(list){
-      trailListEl.innerHTML = '';
-      list.forEach(t => trailListEl.appendChild(createTrailCard(t)));
-    }
-
-    function capitalize(s){return s.charAt(0).toUpperCase()+s.slice(1)}
-
-    // filters
-    document.querySelectorAll('.filter-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        applyFilter(f);
-      });
-    });
-
-    function applyFilter(filter){
-      const all = document.querySelectorAll('.trail');
-      if(filter === 'all'){all.forEach(el=>el.classList.remove('hidden'));return}
-      all.forEach(el=>{
-        if(el.dataset.difficulty === filter) el.classList.remove('hidden');
-        else el.classList.add('hidden');
-      });
-    }
-
-    function toggleDetails(id){
-      const el = document.getElementById('details-'+id);
-      if(!el) return;
-      el.style.display = el.style.display === 'none' ? 'block' : 'none';
-    }
-
-    // Modal/simple toast for subscribing
-    function subscribe(){
-      const input = document.getElementById('email');
-      const email = input.value.trim();
-      if(!email || !email.includes('@')) {
-        alert('Please enter a valid email.');
-        return;
-      }
-      input.value = '';
-      alert('Thanks! You are subscribed to Great Outdoors updates.');
-    }
-
-    // Initial render
-    renderTrails(trails);
-
-    // Optional: Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e){
-        const href = a.getAttribute('href');
-        if(href.length > 1){
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if(target) target.scrollIntoView({behavior:'smooth'});
-        }
-      });
-    });
-  </script>
 </body>
 </html>
