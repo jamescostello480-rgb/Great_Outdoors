@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great Outdoors - Seattle Lakes</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
   <style>
     * {
       margin: 0;
@@ -16,39 +17,61 @@
       color: #333;
     }
     header {
-      background: linear-gradient(135deg, #1e3a5f, #2d5a7b);
+      background: linear-gradient(135deg, #1e5a96 0%, #2b8cbd 100%);
       color: white;
       padding: 2rem;
       text-align: center;
     }
-    nav {
-      background-color: #0f2438;
-      padding: 1rem;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
     .container {
       max-width: 1000px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
+    .lake-intro {
+      background: #f4f4f4;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      color: #555;
+    }
+    .lake-section {
+      margin: 2rem 0;
+    }
+    .lake-section h2 {
+      color: #1e5a96;
+      border-bottom: 3px solid #2d5a7b;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
     .lake-card {
       background: white;
       border: 1px solid #ddd;
+      border-left: 5px solid #1e5a96;
       border-radius: 8px;
       padding: 1.5rem;
       margin: 1rem 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     .lake-card h3 {
-      color: #1e3a5f;
+      color: #1e5a96;
       margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .lake-card p {
+      color: #555;
+      line-height: 1.8;
+    }
+    .feature-image {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      margin: 1.5rem 0;
     }
     footer {
       background-color: #0f2438;
@@ -64,36 +87,143 @@
     <h1>Great Outdoors Seattle</h1>
     <p>Explore Beautiful Lakes Around Seattle, Washington</p>
   </header>
-  
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#lakes">Lakes</a>
-    <a href="#activities">Activities</a>
-    <a href="#contact">Contact</a>
+
+  <nav class="topnav">
+    <a class="logo" href="/">Great Outdoors</a>
+
+    <div class="nav-item">
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
   
   <div class="container">
-    <h2>Popular Lakes Near Seattle</h2>
-    
-    <div class="lake-card">
-      <h3>Lake Union</h3>
-      <p>Located in the heart of Seattle, Lake Union offers stunning views, houseboats, and water activities including kayaking and paddleboarding.</p>
+    <div class="lake-intro">
+      <h2>Lakes</h2>
+      <p>Western Washington offers a wide variety of lakes, from urban spots like Lake Union and Lake Washington to more remote alpine destinations such as Colchuck Lake and Lake Crescent. Popular options near the Seattle area include the accessible Lake Sammamish State Park and the wildlife-rich Anderson Lake State Park, while the Mount Baker-Snoqualmie National Forest features beautiful spots like Watson Lakes.</p>
+      
+      <img src="{{ url_for('static', filename='images/lake.jpg') }}" alt="Pristine alpine lake surrounded by mountains and forest" class="feature-image">
     </div>
-    
-    <div class="lake-card">
-      <h3>Green Lake</h3>
-      <p>A freshwater lake perfect for swimming, walking, and picnicking. The scenic 2.8-mile loop trail is ideal for runners and cyclists.</p>
-    </div>
-    
-    <div class="lake-card">
-      <h3>Lake Washington</h3>
-      <p>Washington's second-largest natural lake, offering beaches, fishing, and beautiful mountain views. Great for families and water sports enthusiasts.</p>
-    </div>
-    
-    <div class="lake-card">
-      <h3>Lake Sammamish</h3>
-      <p>Located east of Seattle, this pristine lake features parks, swimming areas, and is popular for boating and fishing.</p>
-    </div>
+
+    <section id="urban-lakes" class="lake-section">
+      <h2>Lakes Near Urban Areas</h2>
+      
+      <div class="lake-card">
+        <h3>Lake Washington</h3>
+        <p>The largest lake in the county, offering city views and activities like sailing and kayaking.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Lake Sammamish</h3>
+        <p>Known for its state park which features swimming beaches, trails, and sports fields.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Lake Union</h3>
+        <p>A popular spot for kayaking with views of the Space Needle and abundant wildlife like turtles.</p>
+      </div>
+    </section>
+
+    <section id="alpine-lakes" class="lake-section">
+      <h2>Alpine and Mountain Lakes</h2>
+      
+      <div class="lake-card">
+        <h3>Colchuck Lake</h3>
+        <p>Famous for its iconic views of towering peaks.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Crescent Lake</h3>
+        <p>A stunningly clear lake in the Olympic National Park, ideal for kayaking and hiking to Marymere Falls.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Watson Lakes</h3>
+        <p>A pair of alpine lakes in the Mount Baker-Snoqualmie National Forest that are great for day trips or overnight camping.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Snow Lake</h3>
+        <p>A popular hiking destination that offers beautiful reflections and is perfect for a summer day trip.</p>
+      </div>
+    </section>
+
+    <section id="notable-lakes" class="lake-section">
+      <h2>Other Notable Lakes</h2>
+      
+      <div class="lake-card">
+        <h3>Diablo Lake</h3>
+        <p>Located in the North Cascades Mountains and known for its vibrant turquoise color.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Anderson Lake State Park</h3>
+        <p>Features a freshwater marsh and diverse wildlife, accessible via hiking, biking, and equestrian trails.</p>
+      </div>
+      
+      <div class="lake-card">
+        <h3>Mayfield Lake</h3>
+        <p>A clear and shallow lake with a waterfall, offering swimming and camping opportunities.</p>
+      </div>
+    </section>
   </div>
   
   <footer>
