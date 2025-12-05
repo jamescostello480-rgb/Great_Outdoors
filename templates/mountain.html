@@ -1,153 +1,272 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Great Outdoors — Seattle Mountains</title>
-  <meta name="description" content="Guide to the mountain hikes, viewpoints, and outdoors activities near Seattle, Washington — Mount Rainier, Mount Si, Rattlesnake Ledge and more." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --accent:#2176FF;
-      --muted:#6B7280;
-      --bg:#0f1724;
-      --card:#0b1220;
-      --glass:rgba(255,255,255,0.04);
-      color-scheme: dark;
-    }
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:linear-gradient(180deg, #071026 0%, #021018 100%);
-      color:#E6EEF3;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:1rem;
-      padding:1.25rem 1.75rem;
-      backdrop-filter: blur(6px);
-    }
-    .brand{display:flex;align-items:center;gap:.75rem}
-    .logo{
-      width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#1d9bf0,#64ffda);
-      display:flex;justify-content:center;align-items:center;font-weight:800;color:#021018;
-      box-shadow:0 4px 20px rgba(2,8,23,0.45);
-      font-family:monospace;
-    }
-    nav a{color:var(--muted);text-decoration:none;padding:.35rem .5rem;border-radius:6px}
-    nav a:hover{background:var(--glass);color:#fff}
-    .container{max-width:1100px;margin:1.2rem auto;padding:0 1.25rem;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Adventures</title>
+    <style>
+        /* Navigation bar */
+        .topnav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 60px;
+          background-color: green;
+          display: flex;
+          align-items: center;
+          padding: 0 20px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          z-index: 1000;
+          gap: 12px;
+        }
 
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:1rem;
-      align-items:start;
-      padding:1.6rem;
-      border-radius:14px;
-      background:linear-gradient(180deg, rgba(4,12,22,0.6), rgba(4,12,22,0.45));
-      box-shadow: 0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,0.02);
-      overflow:hidden;
-      min-height:380px;
-    }
-    .hero-inner{display:flex;flex-direction:column;gap:.8rem;max-width:720px}
-    .eyebrow{display:inline-block;font-weight:600;color:var(--accent);padding:.25rem .5rem;border-radius:8px;background:rgba(33,118,255,.08);font-size:.82rem}
-    h1{font-size:2.2rem;margin:.1rem 0;line-height:1.06}
-    p.lead{color:var(--muted);margin:0 0 1rem}
-    .badges{display:flex;gap:.5rem;flex-wrap:wrap}
-    .badge{background:var(--glass);padding:.45rem .6rem;border-radius:999px;font-size:.82rem;color:#cfe6ff;display:inline-flex;align-items:center;gap:.5rem}
-    .hero-media{margin-top: 12px;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
-    .hero-media img{width:100%;max-width:320px;border-radius:12px;box-shadow:0 10px 30px rgba(1,6,10,0.6);object-fit:cover;height:200px}
+        /* keep "Great Outdoors" on the left and push the rest to the right */
+        .topnav .logo {
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+          margin-right: auto; /* pushes the other .nav-item elements to the right */
+          font-size: 18px;
+        }
 
-    /* Grid */
-    .grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
-    @media(min-width:900px){ .grid{grid-template-columns:2fr 1fr} }
+        /* each top-level link is a positioned container so its dropdown can be separate */
+        .topnav .nav-item {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+        }
 
-    /* Card */
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.4)
-    }
-    .section-title{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
-    .section-title h2{margin:0;font-size:1.05rem}
-    .trails{display:grid;gap:.6rem}
-    .trail{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02)}
-    .trail img{width:110px;height:70px;border-radius:10px;object-fit:cover}
-    .trail-info{flex:1}
-    .trail-meta{display:flex;gap:.5rem;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
-    .pill{background:rgba(255,255,255,0.03);padding:2px 8px;border-radius:999px}
+        /* small spacing for the direct links */
+        .topnav .nav-item > a {
+          color: white;
+          text-decoration: none;
+          margin: 0 10px;
+          font-weight: 600;
+        }
 
-    /* Mountain Section Cards */
-    .mountain-section{margin:1.5rem 0}
-    .mountain-section h3{color:var(--accent);margin-bottom:.8rem;border-bottom:2px solid rgba(33,118,255,.3);padding-bottom:.4rem}
-    .mountain-list{display:grid;gap:.8rem}
-    .mountain-item{background:rgba(255,255,255,0.01);border-left:3px solid var(--accent);padding:.8rem;border-radius:8px}
-    .mountain-item strong{color:#E6EEF3}
-    .mountain-item p{margin:.4rem 0 0;font-size:.95rem;color:var(--muted)}
+        /* dropdown box for each nav-item */
+        .topnav .nav-item .dropdown {
+          position: absolute;
+          top: 100%; /* directly below the parent link */
+          left: 0;
+          background: #dbf7dd;
+          border-radius: 6px;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+          padding: 8px 12px;
+          min-width: 200px;
+          max-width: calc(100vw - 40px); /* never overflow viewport */
+          box-sizing: border-box;
+          transform-origin: top left;
+          transform: translateY(-6px);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
+          white-space: nowrap;
+          z-index: 1100;
+          overflow-wrap: anywhere;
+        }
 
-    /* Map */
-    .map{width:100%;height:280px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+        /* remove bullets and default list spacing in dropdowns */
+        .topnav .nav-item .dropdown ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
 
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.5rem}
-    .gallery img{width:100%;height:110px;object-fit:cover;border-radius:8px;cursor:pointer;display:block}
-    .modal{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(0deg, rgba(2,6,10,0.75), rgba(2,6,10,0.9));
-    }
-    .modal img{max-width:92%;max-height:86%;border-radius:8px;box-shadow:0 16px 80px rgba(0,0,0,0.8)}
-    .modal.show{display:flex}
+        .topnav .nav-item .dropdown li {
+          margin: 6px 0;
+        }
 
-    /* Footer */
-    footer{opacity:.9;padding:2rem 1.25rem;margin-top:1rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+        /* show only the dropdown for the hovered nav-item */
+        .topnav .nav-item:hover .dropdown {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
 
-    /* Buttons & small helpers */
-    button{appearance:none;background:var(--accent);color:#061228;padding:.6rem .9rem;border:none;border-radius:10px;font-weight:600;cursor:pointer}
-    button.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#d6e9ff}
-    small{font-size:.8rem}
-    a.simple{color:var(--accent);text-decoration:none}
-  </style>
+        /* align dropdown to the right for the last few nav-items to prevent overflow */
+        .topnav .nav-item:nth-last-child(-n+3) .dropdown {
+          left: auto;
+          right: 0;
+          transform-origin: top right;
+        }
+
+        /* links in the dropdown */
+        .topnav .nav-item .dropdown a {
+          color: #0b6b1f; /* green links */
+          text-decoration: none;
+          font-weight: 600;
+        }
+
+        .topnav .nav-item .dropdown a:hover {
+          color: #095010; /* darker green on hover */
+          text-decoration: underline;
+        }
+
+        /* Green header section */
+        .page-header {
+          background-color: green;
+          color: white;
+          padding: 2rem;
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .page-header .eyebrow {
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+          display: block;
+        }
+
+        .page-header h1 {
+          color: white;
+          font-size: 2rem;
+          margin: 0.5rem 0;
+        }
+
+        .page-header .lead {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          max-width: 900px;
+          margin: 1rem auto 0;
+        }
+
+        /* push page content below fixed nav */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 70px;
+            background-color: #dbf7dd;
+            color: #2c3e1f;
+        }
+
+        h1 {
+          color: green;
+        }
+
+        img {
+          width: 300px;
+          height: 200px;
+          border: 10px solid green;
+          color: white;
+          border-radius: 20px;
+        }
+
+        figcaption {
+          width: 315px;
+          text-align: left;
+          margin-left: 50px;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer {
+            background-color: #4a6741;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="logo">GO</div>
-      <div>
-        <strong>Great Outdoors</strong>
-        <div style="font-size:.9rem;color:var(--muted)">Seattle, WA — Mountains & Trails</div>
+  <nav class="topnav">
+    <a href="{{ url_for('index') }}" class="logo">Great Outdoors</a>
+    
+    <div class="nav-item">
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+        </ul>
       </div>
     </div>
-    <nav aria-label="Primary">
-      <a href="#overview">Overview</a>
-      <a href="#beginner">Beginner</a>
-      <a href="#intermediate">Intermediate</a>
-      <a href="#technical">Technical</a>
-      <a href="#map">Map</a>
-    </nav>
+
+    <div class="nav-item">
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <span class="eyebrow">Explore the Cascades & Olympics</span>
+    <h1>Mountains of Western Washington: Hikes, Climbs & Adventures</h1>
+    <p class="lead">Welcome to the wonderful mountains of Western Washington State! We have a number of mountains to climb, camp, and explore throughout the area, including those of the Cascade Mountains and Olympic Peninsula. From beginner-friendly day hikes to technical multi-day climbs, find route details, difficulty levels, and essential tips.</p>
   </header>
 
   <main class="container">
     <section class="hero card" aria-labelledby="hero-heading">
       <div class="hero-inner">
-        <span class="eyebrow">Explore the Cascades & Olympics</span>
-        <h1 id="hero-heading">Mountains of Western Washington: Hikes, Climbs & Adventures</h1>
-        <p class="lead">Welcome to the wonderful mountains of Western Washington State! We have a number of mountains to climb, camp, and explore throughout the area, including those of the Cascade Mountains and Olympic Peninsula. From beginner-friendly day hikes to technical multi-day climbs, find route details, difficulty levels, and essential tips.</p>
-        <div class="badges" aria-hidden="true">
-          <span class="badge">Day hikes</span>
-          <span class="badge">Technical climbs</span>
-          <span class="badge">Multi-day trips</span>
-          <span class="badge">Volcanoes</span>
-        </div>
-
         <div class="hero-media" role="img" aria-label="Seattle mountain views">
-          <img src="https://images.unsplash.com/photo-1500776220850-0b8adb7eb5d7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8c9f2f22f8a9eafb89d7e21f4b5659f9" alt="View of forested mountain and snow-capped peak at sunrise">
-          <img src="https://images.unsplash.com/photo-1455763916899-e8b50eca9966?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7de7cbe1b38f5927d5c5ace502c1f2f6" alt="Trail with hikers and mountain ridge in the background">
+          <img src="{{ url_for('static', filename='images/mountain.jpg') }}" alt="Mountain view">
         </div>
 
         <div style="display:flex;gap:.8rem;margin-top:10px;">

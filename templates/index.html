@@ -3,7 +3,26 @@
 <head>
     <title>Welcome to the Great Outdoors!</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="{{ url_for('static', filename='scripts/myscripts.js') }}"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding-top: 70px;
+            background-color: #dbf7dd;
+        }
+        h1, h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            color: green;
+        }
+        p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,72 +46,72 @@
       </ul>
     </section>
     <nav class="topnav" style="background: linear-gradient(135deg, green 0%, green 100%); padding: 1rem; margin: 0;">
-  <a class="logo" href="/">Great Outdoors</a>
+      <a class="logo" href="/">Great Outdoors</a>
 
-  <div class="nav-item">
-    <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="nav-item">
+        <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="nav-item">
-    <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="nav-item">
+        <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="nav-item">
-    <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="nav-item">
+        <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="nav-item">
-    <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="nav-item">
+        <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="nav-item">
-    <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="nav-item">
+        <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="nav-item">
-    <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="nav-item">
+        <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+          </ul>
+        </div>
+      </div>
 
-  <div class="nav-item">
-    <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
-    <div class="dropdown">
-      <ul>
-        <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
-      </ul>
-    </div>
-  </div>
+      <div class="nav-item">
+        <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
+          </ul>
+        </div>
+      </div>
 
-</nav>
+    </nav>
 
 </body>
 </html>
