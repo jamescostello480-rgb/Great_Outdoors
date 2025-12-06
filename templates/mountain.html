@@ -4,135 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mountain Adventures</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
     <style>
-        /* Navigation bar */
-        .topnav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 60px;
-          background-color: green;
-          display: flex;
-          align-items: center;
-          padding: 0 20px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-          z-index: 1000;
-          gap: 12px;
-        }
-
-        /* keep "Great Outdoors" on the left and push the rest to the right */
-        .topnav .logo {
-          color: white;
-          font-weight: bold;
-          text-decoration: none;
-          margin-right: auto; /* pushes the other .nav-item elements to the right */
-          font-size: 18px;
-        }
-
-        /* each top-level link is a positioned container so its dropdown can be separate */
-        .topnav .nav-item {
-          position: relative;
-          display: inline-flex;
-          align-items: center;
-        }
-
-        /* small spacing for the direct links */
-        .topnav .nav-item > a {
-          color: white;
-          text-decoration: none;
-          margin: 0 10px;
-          font-weight: 600;
-        }
-
-        /* dropdown box for each nav-item */
-        .topnav .nav-item .dropdown {
-          position: absolute;
-          top: 100%; /* directly below the parent link */
-          left: 0;
-          background: #dbf7dd;
-          border-radius: 6px;
-          box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-          padding: 8px 12px;
-          min-width: 200px;
-          max-width: calc(100vw - 40px); /* never overflow viewport */
-          box-sizing: border-box;
-          transform-origin: top left;
-          transform: translateY(-6px);
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
-          white-space: nowrap;
-          z-index: 1100;
-          overflow-wrap: anywhere;
-        }
-
-        /* remove bullets and default list spacing in dropdowns */
-        .topnav .nav-item .dropdown ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        .topnav .nav-item .dropdown li {
-          margin: 6px 0;
-        }
-
-        /* show only the dropdown for the hovered nav-item */
-        .topnav .nav-item:hover .dropdown {
-          transform: translateY(0);
-          opacity: 1;
-          visibility: visible;
-        }
-
-        /* align dropdown to the right for the last few nav-items to prevent overflow */
-        .topnav .nav-item:nth-last-child(-n+3) .dropdown {
-          left: auto;
-          right: 0;
-          transform-origin: top right;
-        }
-
-        /* links in the dropdown */
-        .topnav .nav-item .dropdown a {
-          color: #0b6b1f; /* green links */
-          text-decoration: none;
-          font-weight: 600;
-        }
-
-        .topnav .nav-item .dropdown a:hover {
-          color: #095010; /* darker green on hover */
-          text-decoration: underline;
-        }
-
-        /* Green header section */
-        .page-header {
-          background-color: green;
-          color: white;
-          padding: 2rem;
-          text-align: center;
-          margin-bottom: 2rem;
-        }
-
-        .page-header .eyebrow {
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
-          display: block;
-        }
-
-        .page-header h1 {
-          color: white;
-          font-size: 2rem;
-          margin: 0.5rem 0;
-        }
-
-        .page-header .lead {
-          font-size: 1.1rem;
-          line-height: 1.6;
-          max-width: 900px;
-          margin: 1rem auto 0;
-        }
-
-        /* push page content below fixed nav */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -141,46 +14,77 @@
             color: #2c3e1f;
         }
 
-        h1 {
-          color: green;
-        }
-
-        img {
-          width: 300px;
-          height: 200px;
-          border: 10px solid green;
-          color: white;
-          border-radius: 20px;
-        }
-
-        figcaption {
-          width: 315px;
-          text-align: left;
-          margin-left: 50px;
-        }
-
-        main {
-            padding: 2rem;
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 2rem;
         }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid green;
+        }
+
+        .card h2 {
+            color: green;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: green;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p, .card li {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border: 10px solid green;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 1rem;
+        }
+
+        .mountain-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .mountain-item:last-child {
+            border-bottom: none;
+        }
+
+        .mountain-item strong {
+            color: green;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
         footer {
             background-color: #4a6741;
             color: white;
             text-align: center;
             padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
+            margin-top: 2rem;
         }
 
         footer a {
             color: white;
             text-decoration: none;
+            margin: 0 0.5rem;
         }
 
         footer a:hover {
@@ -193,19 +97,19 @@
     <a href="{{ url_for('index') }}" class="logo">Great Outdoors</a>
     
     <div class="nav-item">
-      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountains</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountains</a></li>
         </ul>
       </div>
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forests</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forests</a></li>
         </ul>
       </div>
     </div>
@@ -220,179 +124,140 @@
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferries</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferries</a></li>
         </ul>
       </div>
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lakes</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lakes</a></li>
         </ul>
       </div>
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Parks</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Parks</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="nav-item">
-      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
-      <div class="dropdown">
-        <ul>
-          <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
-        </ul>
-      </div>
-    </div>
+    <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; margin: 0 10px; font-weight: 600;">Login</a>
   </nav>
 
-  <header class="page-header">
-    <span class="eyebrow">Explore the Cascades & Olympics</span>
-    <h1>Mountains of Western Washington: Hikes, Climbs & Adventures</h1>
-    <p class="lead">Welcome to the wonderful mountains of Western Washington State! We have a number of mountains to climb, camp, and explore throughout the area, including those of the Cascade Mountains and Olympic Peninsula. From beginner-friendly day hikes to technical multi-day climbs, find route details, difficulty levels, and essential tips.</p>
+  <header style="background-color: green; color: white; padding: 3rem 2rem; text-align: center; margin-bottom: 0;">
+    <h1 style="margin: 0 0 0.5rem 0; font-size: 2.5rem; color: white;">Great Outdoors</h1>
+    <p style="margin: 0; font-size: 1.2rem; color: white;">Explore the vast mountains in Washington State</p>
   </header>
 
-  <main class="container">
-    <section class="hero card" aria-labelledby="hero-heading">
-      <div class="hero-inner">
-        <div class="hero-media" role="img" aria-label="Seattle mountain views">
-          <img src="{{ url_for('static', filename='images/mountain.jpg') }}" alt="Mountain view">
-        </div>
-
-        <div style="display:flex;gap:.8rem;margin-top:10px;">
-          <button onclick="document.querySelector('#beginner').scrollIntoView({behavior:'smooth'})">Explore Mountains</button>
-          <button class="secondary" onclick="document.querySelector('#map').scrollIntoView({behavior:'smooth'})">Open Map</button>
-        </div>
-      </div>
-    </section>
-
-    <div class="grid">
-      <section id="mountains-guide" class="card">
-        
-        <div class="mountain-section" id="beginner">
-          <h3>Beginner Mountain List</h3>
-          <p style="color:var(--muted);margin-bottom:1rem">Perfect for those starting their mountain adventure. These peaks offer rewarding views with accessible trails.</p>
-          <div class="mountain-list">
-            <div class="mountain-item">
-              <strong>Mount Sai</strong>
-              <p>This day climb mountain could also be categorized as a hike due to its beginner friendly nature. There are some fantastic views at the summit of Western Washington. It can get crowded in the summer months, but this shouldn't detract from the experience. It's also a great climb for couples, or groups of friends.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Mt. Saint Helens</strong>
-              <p>A popular, single-day climb with spectacular views of surrounding volcanoes and the Pacific Ocean. It is a good option due to its limited avalanche danger and lack of crevasses, making it suitable for those without extensive training.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Mount Pilchuck</strong>
-              <p>A 6-mile roundtrip hike with a historic lookout and views of the Central Cascades.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Granite Mountain</strong>
-              <p>An 8.6-mile roundtrip hike that climbs through avalanche chutes and berry bushes.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Tiger Mountain</strong>
-              <p>A longer day hike that offers a close-up view of paraglider launches.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mountain-section" id="intermediate">
-          <h3>Intermediate Climbs</h3>
-          <p style="color:var(--muted);margin-bottom:1rem">For climbers with some experience. These routes offer mixed terrain and moderate technical challenges.</p>
-          <div class="mountain-list">
-            <div class="mountain-item">
-              <strong>Sulphide Glacier</strong>
-              <p>Recommended for intermediate to expert climbers.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Fisher Chimneys</strong>
-              <p>A good intermediate-level climb.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Eldorado Peak</strong>
-              <p>Features a snowy, knife-edge ridgeline.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Twin Sisters Traverse</strong>
-              <p>Involves some easy rock climbing and glacier travel, with views of Mount Baker and the North Cascades.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mountain-section" id="technical">
-          <h3>Multi-Day Technical Climbs</h3>
-          <p style="color:var(--muted);margin-bottom:1rem">For experienced mountaineers. These peaks require technical skills, proper equipment, and training.</p>
-          <div class="mountain-list">
-            <div class="mountain-item">
-              <strong>Mount Rainier</strong>
-              <p>Washington's highest peak, it is a premier destination that requires technical climbing skills and equipment for the summit.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Mount Adams</strong>
-              <p>A large volcano that is a popular guided climb, often taking about three days.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Mount Baker</strong>
-              <p>A great introduction to mountaineering, with most climbs lasting around three days.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Glacier Peak</strong>
-              <p>A more remote volcano climb, ideal for those with previous mountaineering experience. It's Washington's fourth-highest and most isolated volcano.</p>
-            </div>
-            <div class="mountain-item">
-              <strong>Mount Shuksan</strong>
-              <p>Known for offering a different type of glaciated climb compared to classic volcanoes, with climbs typically taking four days.</p>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <aside id="map" class="card" aria-labelledby="map-heading">
-        <div class="section-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2v20" stroke="#ffd166" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 12h12" stroke="#ffd166" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <h2 id="map-heading">Quick Map & Local Weather</h2>
-        </div>
-
-        <div class="map" aria-hidden="false">
-          <iframe
-            title="Seattle mountain region map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-122.54%2C47.35%2C-121.35%2C47.95&layer=mapnik&marker=47.6062,-122.3321"
-            style="border:0;width:100%;height:100%;"></iframe>
-        </div>
-
-        <div style="margin-top:.8rem;display:flex;gap:.5rem;align-items:center">
-          <div style="flex:1">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <strong>Seattle Area Weather</strong>
-              <small id="weather-time" style="color:var(--muted)">--</small>
-            </div>
-            <div id="weather" style="font-size:1.1rem;margin-top:.35rem;color:var(--muted)">Loading...</div>
-          </div>
-          <button class="secondary" id="refresh-weather">Refresh</button>
-        </div>
-      </aside>
-
+  <div class="container">
+    <div class="card">
+      <h2>Mountains of Western Washington: Hikes, Climbs & Adventures</h2>
+      <p>Welcome to the wonderful mountains of Western Washington State! We have a number of mountains to climb, camp, and explore throughout the area, including those of the Cascade Mountains and Olympic Peninsula. From beginner-friendly day hikes to technical multi-day climbs, find route details, difficulty levels, and essential tips.</p>
+      <img src="{{ url_for('static', filename='images/mountain.jpg') }}" alt="Mountain view">
     </div>
 
-    <section class="card" aria-labelledby="safety-heading" style="margin-top:1rem;">
-      <div class="section-title">
-        <h2 id="safety-heading">Safety & Preparation</h2>
+    <div class="card">
+      <h2>Beginner Mountain List</h2>
+      <p>Perfect for those starting their mountain adventure. These peaks offer rewarding views with accessible trails.</p>
+      
+      <div class="mountain-item">
+        <strong>Mount Sai</strong>
+        <p>This day climb mountain could also be categorized as a hike due to its beginner friendly nature. There are some fantastic views at the summit of Western Washington. It can get crowded in the summer months, but this shouldn't detract from the experience. It's also a great climb for couples, or groups of friends.</p>
       </div>
-      <ul style="color:var(--muted);margin:0 0 0 1rem;padding:0.25rem 0 0 0">
+      
+      <div class="mountain-item">
+        <strong>Mt. Saint Helens</strong>
+        <p>A popular, single-day climb with spectacular views of surrounding volcanoes and the Pacific Ocean. It is a good option due to its limited avalanche danger and lack of crevasses, making it suitable for those without extensive training.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Mount Pilchuck</strong>
+        <p>A 6-mile roundtrip hike with a historic lookout and views of the Central Cascades.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Granite Mountain</strong>
+        <p>An 8.6-mile roundtrip hike that climbs through avalanche chutes and berry bushes.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Tiger Mountain</strong>
+        <p>A longer day hike that offers a close-up view of paraglider launches.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Intermediate Climbs</h2>
+      <p>For climbers with some experience. These routes offer mixed terrain and moderate technical challenges.</p>
+      
+      <div class="mountain-item">
+        <strong>Sulphide Glacier</strong>
+        <p>Recommended for intermediate to expert climbers.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Fisher Chimneys</strong>
+        <p>A good intermediate-level climb.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Eldorado Peak</strong>
+        <p>Features a snowy, knife-edge ridgeline.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Twin Sisters Traverse</strong>
+        <p>Involves some easy rock climbing and glacier travel, with views of Mount Baker and the North Cascades.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Multi-Day Technical Climbs</h2>
+      <p>For experienced mountaineers. These peaks require technical skills, proper equipment, and training.</p>
+      
+      <div class="mountain-item">
+        <strong>Mount Rainier</strong>
+        <p>Washington's highest peak, it is a premier destination that requires technical climbing skills and equipment for the summit.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Mount Adams</strong>
+        <p>A large volcano that is a popular guided climb, often taking about three days.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Mount Baker</strong>
+        <p>A great introduction to mountaineering, with most climbs lasting around three days.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Glacier Peak</strong>
+        <p>A more remote volcano climb, ideal for those with previous mountaineering experience. It's Washington's fourth-highest and most isolated volcano.</p>
+      </div>
+      
+      <div class="mountain-item">
+        <strong>Mount Shuksan</strong>
+        <p>Known for offering a different type of glaciated climb compared to classic volcanoes, with climbs typically taking four days.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Flora & Fauna You May See</h2>
+      <p>The area is home to Douglas firs, western hemlock, alpine wildflowers in summer, black bears (rare at lower elevations but present in the Cascades), marmots, and a wide variety of birds including gray jays and eagles. Respect wildlife by keeping distance and storing food properly.</p>
+    </div>
+
+    <div class="card">
+      <h2>Safety & Preparation</h2>
+      <ul>
         <li>Check the latest trail and weather reports. Mountain conditions can change quickly.</li>
         <li>Pack layers — even summer hikes can get cold at elevation. Bring rain protection.</li>
         <li>Carry plenty of water and snacks. Many Pacific Northwest trails are steep and exposed.</li>
@@ -400,68 +265,16 @@
         <li>Respect closures and private land. Stay on trail and leave no trace.</li>
         <li>For technical climbs, ensure you have proper training, equipment, and consider hiring a guide.</li>
       </ul>
-    </section>
+    </div>
+  </div>
 
-    <section class="card" aria-labelledby="wildlife-heading" style="margin-top:1rem;">
-      <div class="section-title">
-        <h2 id="wildlife-heading">Flora & Fauna You May See</h2>
-      </div>
-
-      <p style="color:var(--muted)">The area is home to Douglas firs, western hemlock, alpine wildflowers in summer, black bears (rare at lower elevations but present in the Cascades), marmots, and a wide variety of birds including gray jays and eagles. Respect wildlife by keeping distance and storing food properly.</p>
-    </section>
-
-  </main>
-
-  <footer class="container">
-    <small>Copyright &copy; <span id="year"></span> Great Outdoors — Seattle. Data & images are for illustrative purposes.</small>
-    <div style="display:flex;gap:.5rem;align-items:center">
-      <a class="simple" href="https://www.nps.gov/mora/index.htm" target="_blank" rel="noopener">Mount Rainier NPS</a>
-      <a class="simple" href="https://www.fs.usda.gov/" target="_blank" rel="noopener">US Forest Service</a>
-      <a class="simple" href="https://www.wta.org" target="_blank" rel="noopener">Washington Trails Association</a>
+  <footer>
+    <small>Copyright &copy; 2025 Great Outdoors. Data & images are for illustrative purposes.</small>
+    <div>
+      <a href="https://www.nps.gov/mora/index.htm" target="_blank" rel="noopener">Mount Rainier NPS</a>
+      <a href="https://www.fs.usda.gov/" target="_blank" rel="noopener">US Forest Service</a>
+      <a href="https://www.wta.org" target="_blank" rel="noopener">Washington Trails Association</a>
     </div>
   </footer>
-
-  <script>
-    // Copyright-free weather query using Open-Meteo (no API key).
-    const weatherEl = document.getElementById('weather');
-    const weatherTime = document.getElementById('weather-time');
-
-    const seattleCoords = {lat: 47.6062, lon: -122.3321}; // Downtown Seattle
-    async function fetchWeather(lat, lon){
-      try{
-        weatherEl.textContent = 'Fetching weather...';
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,precipitation_probability`;
-        const res = await fetch(url);
-        const data = await res.json();
-        const cw = data.current_weather;
-        if(!cw){ throw new Error('No current weather'); }
-        const t = Math.round(cw.temperature);
-        const wcode = cw.weathercode;
-        const time = new Date(cw.time).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-        weatherTime.textContent = time;
-        const summary = `${t}°C — ${translateWeatherCode(wcode)}`;
-        weatherEl.textContent = summary;
-      }catch(e){
-        weatherEl.textContent = 'Weather unavailable';
-        console.warn(e);
-      }
-    }
-    function translateWeatherCode(code){
-      // simplified mapping for common codes (Open-Meteo code table)
-      if(code === 0) return 'Clear';
-      if(code === 1 || code === 2) return 'Partly cloudy';
-      if(code === 3) return 'Overcast';
-      if(code >=45 && code<=48) return 'Fog';
-      if(code>=51 && code<=67) return 'Rain';
-      if(code>=71 && code<=86) return 'Snow/Showers';
-      if(code>=95) return 'Thunderstorms';
-      return 'Mixed conditions';
-    }
-    document.getElementById('refresh-weather').addEventListener('click', () => fetchWeather(seattleCoords.lat, seattleCoords.lon));
-    fetchWeather(seattleCoords.lat, seattleCoords.lon);
-
-    // Small dynamic items
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
