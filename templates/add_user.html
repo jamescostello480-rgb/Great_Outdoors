@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Great Outdoors WA - User Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
     <style>
         * {
             margin: 0;
@@ -14,6 +15,12 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #dbf7dd 0%, #dbf7dd 100%);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 70px;
+        }
+        .content-wrapper {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -90,22 +97,84 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Great Outdoors WA</h1>
-        <p>User Login</p>
-        <form>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+    <nav class="topnav" style="background: linear-gradient(135deg, green 0%, green 100%); padding: 1rem; margin: 0;">
+      <a class="logo" href="/">Great Outdoors</a>
+
+      <div class="nav-item">
+        <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountains</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountains</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forests</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forests</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">Falls</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('falls') }}" target="_blank" rel="noopener noreferrer">See the Falls</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferries</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferries</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lakes</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lakes</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Parks</a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Parks</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; margin: 0 10px; font-weight: 600;">Login</a>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="login-container">
+            <h1>Great Outdoors WA</h1>
+            <p>User Login</p>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
-        <div class="login-footer">
-            <p>Don't have an account? <a href="#">Sign up</a></p>
         </div>
     </div>
 </body>

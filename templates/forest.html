@@ -58,11 +58,23 @@
       margin: 18px 0;
     }
     footer {
-      padding: 28px 20px;
-      margin-top: 36px;
-      background: linear-gradient(0deg, #07221a, #07221a);
-      color: #e8f7ee;
+      background-color: #4a6741;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
     }
+    
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     .forest-section {
       background: var(--card); /* Card background */
       padding: 18px;
@@ -95,19 +107,19 @@
     <a class="logo" href="/">Great Outdoors</a>
 
     <div class="nav-item">
-      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+      <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountains</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+          <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountains</a></li>
         </ul>
       </div>
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+      <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forests</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+          <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forests</a></li>
         </ul>
       </div>
     </div>
@@ -122,40 +134,33 @@
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+      <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferries</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+          <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferries</a></li>
         </ul>
       </div>
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+      <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lakes</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+          <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lakes</a></li>
         </ul>
       </div>
     </div>
 
     <div class="nav-item">
-      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+      <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Parks</a>
       <div class="dropdown">
         <ul>
-          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+          <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Parks</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="nav-item">
-      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
-      <div class="dropdown">
-        <ul>
-          <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
-        </ul>
-      </div>
-    </div>
+    <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; margin: 0 10px; font-weight: 600;">Login</a>
   </nav>
 
   <main>
@@ -198,7 +203,12 @@
   </main>
 
   <footer>
-    <p>&copy; 2024 Great Outdoors Seattle - Forest Guide</p>
+    <small>Copyright &copy; 2025 Great Outdoors. Data & images are for illustrative purposes.</small>
+    <div>
+      <a href="https://www.nps.gov/mora/index.htm" target="_blank" rel="noopener">Mount Rainier NPS</a>
+      <a href="https://www.fs.usda.gov/" target="_blank" rel="noopener">US Forest Service</a>
+      <a href="https://www.wta.org" target="_blank" rel="noopener">Washington Trails Association</a>
+    </div>
   </footer>
 </body>
 </html>

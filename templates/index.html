@@ -12,56 +12,82 @@
             margin: 0;
             padding-top: 70px;
             background-color: #dbf7dd;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         h1, h2 {
             font-family: 'Inter', sans-serif;
             font-weight: 800;
             color: green;
+            text-align: center;
         }
         p {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
         }
+        .content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        img {
+            display: block;
+            margin: 2rem auto;
+        }
+        figcaption {
+            text-align: center;
+            color: green;
+            font-weight: 600;
+        }
+        .users-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid green;
+        }
+        footer {
+            background-color: #4a6741;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
-
-    <h1>Welcome to the Great Outdoors!</h1>
-
-    <img src="{{ url_for('static', filename='images/outdoors.jpg') }}" alt="Great Outdoors" onmouseover="showAlt(this)" onmouseout="hideAlt(this)">
-    <figcaption>Your Adventure Awaits!</figcaption>
-
-    <p id="alttext" style="font-size:50px"></p>
-
-    <!-- Current users section -->
-    <section id="current-users" class="users-section" aria-labelledby="current-users-heading">
-      <h2 id="current-users-heading">Current Users</h2>
-      <ul>
-          {% for user in users %}
-              <li>{{ user.name }}</li>
-          {% else %}
-              <li>No users yet.</li>
-          {% endfor %}
-      </ul>
-    </section>
     <nav class="topnav" style="background: linear-gradient(135deg, green 0%, green 100%); padding: 1rem; margin: 0;">
       <a class="logo" href="/">Great Outdoors</a>
 
       <div class="nav-item">
-        <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountain</a>
+        <a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Mountains</a>
         <div class="dropdown">
           <ul>
-            <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountain</a></li>
+            <li><a href="{{ url_for('mountain') }}" target="_blank" rel="noopener noreferrer">Climb the Mountains</a></li>
           </ul>
         </div>
       </div>
 
       <div class="nav-item">
-        <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forest</a>
+        <a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Forests</a>
         <div class="dropdown">
           <ul>
-            <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forest</a></li>
+            <li><a href="{{ url_for('forest') }}" target="_blank" rel="noopener noreferrer">Wander the Forests</a></li>
           </ul>
         </div>
       </div>
@@ -76,43 +102,53 @@
       </div>
 
       <div class="nav-item">
-        <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferry</a>
+        <a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ferries</a>
         <div class="dropdown">
           <ul>
-            <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferry</a></li>
+            <li><a href="{{ url_for('ferry') }}" target="_blank" rel="noopener noreferrer">Ride the Ferries</a></li>
           </ul>
         </div>
       </div>
 
       <div class="nav-item">
-        <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lake</a>
+        <a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Lakes</a>
         <div class="dropdown">
           <ul>
-            <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lake</a></li>
+            <li><a href="{{ url_for('lake') }}" target="_blank" rel="noopener noreferrer">Walk Around the Lakes</a></li>
           </ul>
         </div>
       </div>
 
       <div class="nav-item">
-        <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Park</a>
+        <a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Parks</a>
         <div class="dropdown">
           <ul>
-            <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Park</a></li>
+            <li><a href="{{ url_for('park') }}" target="_blank" rel="noopener noreferrer">Read in the Parks</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="nav-item">
-        <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add User</a>
-        <div class="dropdown">
-          <ul>
-            <li><a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer">Add New User</a></li>
-          </ul>
-        </div>
-      </div>
+      <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; margin: 0 10px; font-weight: 600;">Login</a>
 
     </nav>
 
+    <div class="content">
+      <h1>Welcome to the Great Outdoors!</h1>
+
+      <img src="{{ url_for('static', filename='images/outdoors.jpg') }}" alt="Great Outdoors">
+      <p style="text-align:center; color:green; font-weight:600; font-size:1.2rem; margin-top:1rem;">Your Adventure Awaits!</p>
+
+      <p id="alttext" style="font-size:50px; text-align:center;"></p>
+    </div>
+
+    <footer>
+        <small>Copyright &copy; 2025 Great Outdoors. Data & images are for illustrative purposes.</small>
+        <div>
+            <a href="https://www.nps.gov/mora/index.htm" target="_blank" rel="noopener">Mount Rainier NPS</a>
+            <a href="https://www.fs.usda.gov/" target="_blank" rel="noopener">US Forest Service</a>
+            <a href="https://www.wta.org" target="_blank" rel="noopener">Washington Trails Association</a>
+        </div>
+    </footer>
 </body>
 </html>
 
