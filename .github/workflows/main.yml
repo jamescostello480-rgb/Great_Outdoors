@@ -1,0 +1,50 @@
+name: Close Unlabeled Issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write  # Allow the workflow to modify issues (add comments, close issues)
+
+jobs:
+  check-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if the issue has a "To Do" label
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue_number = context.issue.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Fetch issue details
+            const issue = await github.rest.issues.get({
+              owner: owner,
+              repo: repo,
+              issue_number: issue_number,
+            });
+
+            // Check if the issue has the "To Do" label
+            const hasLabel = issue.data.labels.length > 0;
+            
+            // If the issue does not have the "To Do" label, close it and comment
+            if (!hasLabel) {
+              // Add a comment explaining why the issue is being closed
+              await github.rest.issues.createComment({
+                owner: owner,
+                repo: repo,
+                issue_number: issue_number,
+                body: 'This issue has been automatically closed because it does not have the "To Do" label. Please add the required label to reopen.',
+              });
+
+              // Close the issue
+              await github.rest.issues.update({
+                owner: owner,
+                repo: repo,
+                issue_number: issue_number,
+                state: 'closed',
+              });
+            }
