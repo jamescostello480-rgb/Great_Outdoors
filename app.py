@@ -52,6 +52,33 @@ def lake():
 @app.route('/park')
 def park():
     return render_template('park.html')
+@app.route('/search')
+def search():
+    q = request.args.get('q', '')
+    q = q.strip()
+    if not q:
+        return redirect(url_for('index'))
+
+    # Search users by name (case-insensitive, partial match)
+    users = User.query.filter(User.name.ilike(f"%{q}%")).all()
+
+    # Simple static page search (search by title)
+    pages = []
+    available_pages = [
+        (url_for('mountain'), 'Mountains'),
+        (url_for('forest'), 'Forests'),
+        (url_for('falls'), 'Falls'),
+        (url_for('ferry'), 'Ferries'),
+        (url_for('lake'), 'Lakes'),
+        (url_for('park'), 'Parks'),
+    ]
+    q_lower = q.lower()
+    for p_url, p_title in available_pages:
+        if q_lower in p_title.lower():
+            pages.append({'url': p_url, 'title': p_title})
+
+    return render_template('search_results.html', query=q, users=users, pages=pages)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
