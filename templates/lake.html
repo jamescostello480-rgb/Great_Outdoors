@@ -155,6 +155,11 @@
       </div>
     </div>
 
+    <form action="{{ url_for('search') }}" method="get" style="display:inline-block; margin-left:12px; vertical-align:middle;">
+        <input name="q" type="search" placeholder="Search users & pages..." style="padding:6px 8px; border-radius:6px; border:1px solid rgba(255,255,255,0.2);">
+        <button type="submit" style="padding:6px 10px; margin-left:6px; border-radius:6px; background:rgba(255,255,255,0.08); color:white; border:none">Search</button>
+      </form>
+
     <a href="{{ url_for('add_user') }}" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; margin: 0 10px; font-weight: 600;">Login</a>
   </nav>
   

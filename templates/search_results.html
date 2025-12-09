@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Search Results - Great Outdoors</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/toplevel.css') }}">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding-top:70px; background:#f6fbf8 }
+    .container { max-width:1100px; margin:2rem auto; padding:1rem }
+    .results { background: white; border-radius:8px; padding:1.2rem; border-left:4px solid green }
+    .results h2 { color: green }
+    .item { padding:0.6rem 0; border-bottom:1px solid #eee }
+    .empty { color:#666; padding:1rem }
+    footer { background-color: #4a6741; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <nav class="topnav" style="background: linear-gradient(135deg, green 0%, green 100%); padding: 1rem; margin: 0;">
+    <a class="logo" href="/">Great Outdoors</a>
+    <form action="{{ url_for('search') }}" method="get" style="display:inline-block; margin-left:1rem;">
+      <input name="q" type="search" placeholder="Search users & pages..." value="{{ query }}" style="padding:6px 8px; border-radius:6px; border:1px solid rgba(0,0,0,0.1)">
+      <button type="submit" style="padding:6px 10px; margin-left:6px; border-radius:6px; background:rgba(255,255,255,0.08); color:white; border:none">Search</button>
+    </form>
+    <a href="{{ url_for('add_user') }}" style="color: white; text-decoration: none; margin: 0 10px; font-weight: 600; float:right;">Login</a>
+  </nav>
+
+  <div class="container">
+    <div class="results">
+      <h2>Search Results for "{{ query }}"</h2>
+
+      <h3>Users</h3>
+      {% if users and users|length > 0 %}
+        {% for u in users %}
+          <div class="item">{{ u.name }}</div>
+        {% endfor %}
+      {% else %}
+        <div class="empty">No matching users found.</div>
+      {% endif %}
+
+      <h3 style="margin-top:1rem">Pages</h3>
+      {% if pages and pages|length > 0 %}
+        {% for p in pages %}
+          <div class="item"><a href="{{ p.url }}">{{ p.title }}</a></div>
+        {% endfor %}
+      {% else %}
+        <div class="empty">No matching pages found.</div>
+      {% endif %}
+
+      <div style="margin-top:1rem"><a href="{{ url_for('index') }}">Back to home</a></div>
+    </div>
+  </div>
+
+  <footer>
+    <small>Copyright &copy; 2025 Great Outdoors. Data & images are for illustrative purposes.</small>
+  </footer>
+</body>
+</html>
